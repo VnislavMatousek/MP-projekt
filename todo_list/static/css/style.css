@@ -63,16 +63,19 @@ nav ul li a:after {
     top: 0;
     right: 0;
     z-index: -1;
-    background-color: mediumpurple;
+    background-color: darkseagreen;
     transition: all 0.3s ease;
 }
 nav ul li a:hover {
     color: black;
+    transform: scale(1.050);
 }
 nav ul li a:hover:after {
     left: 0;
     width: 100%;
+
 }
 nav ul li a:active {
     top: 2px;
+
 }
