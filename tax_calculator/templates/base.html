@@ -4,24 +4,84 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>{% block title %}{% endblock %}</title>
+        <link rel="icon" type="image/x-icon" href="{% static '/images/minilogo.png' %}">
         <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+        {% block extra_css %}{% endblock %}
     </head>
     <body>
     <nav>
-        <div class="maintext"><a href="{% url "index" %}"></a></div>
+        <div class="maintext">
+            <a href="{% url 'index' %}">
+                <img src="{% static 'images/Logo.jpg' %}" alt="">
+            </a>
+        </div>
+        <input class="menu-btn" type="checkbox" id="menu-btn"/>
+        <label class="menu-icon" for="menu-btn">
+            <span class="nav-icon"></span>
+        </label>
         <ul>
-            <li><a href="{% url "index" %}">Home</a></li>
+            <li><a href="{% url "index" %}">Domů</a></li>
+            <li><a href="{% url "calculate_tax" %}">Měsíční</a></li>
+            <li><a href="{% url "calculate_tax2" %}">Roční</a></li>
+            <li><a href="{% url "result_history" %}">Historie</a></li>
+            <li><a href="{% url "calculate_tax3" %}">Novinky</a></li>
             {% if user.is_authenticated %}
                 {% if user.is_staff %}
                     <li><a href="{% url "admin:index" %}">Admin page</a></li>
                 {% endif %}
-                <li><a href="{% url "password_change" %}">Edit password</a></li>
-                <li><a href="{% url "logout" %}">Logout</a></li>
+                <li><a href="{% url "password_change" %}">Změnit heslo</a></li>
+                <li><a href="{% url "logout" %}">Odhlásit</a></li>
             {% else %}
-                <li><a href="{% url "registration" %}">Registration</a></li>
-                <li><a href="{% url "login" %}">Login</a></li>
+                <li><a href="{% url "registration" %}">Registrace</a></li>
+                <li><a href="{% url "login" %}">Příhlásit</a></li>
             {% endif %}
         </ul>
     </nav>
+    {% block content %}
+    {% endblock %}
+    <footer class="footer">
+        <div class="konec">
+            <div class="rada">
+                <div class="footer-sloup">
+                    <h4>company</h4>
+                    <ul>
+                        <li><a href="#">about us</a></li>
+                        <li><a href="#">our services</a></li>
+                        <li><a href="#">privacy policy</a></li>
+                        <li><a href="#">affiliate program</a></li>
+                    </ul>
+                </div>
+                <div class="footer-sloup">
+                    <h4>get help</h4>
+                    <ul>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">shipping</a></li>
+                        <li><a href="#">returns</a></li>
+                        <li><a href="#">order status</a></li>
+                        <li><a href="#">payment options</a></li>
+                    </ul>
+                </div>
+                <div class="footer-sloup">
+                    <h4>online shop</h4>
+                    <ul>
+                        <li><a href="#">watch</a></li>
+                        <li><a href="#">bag</a></li>
+                        <li><a href="#">shoes</a></li>
+                        <li><a href="#">dress</a></li>
+                    </ul>
+                </div>
+                <div class="footer-sloup">
+                    <h4>follow us</h4>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
     </body>
 </html>

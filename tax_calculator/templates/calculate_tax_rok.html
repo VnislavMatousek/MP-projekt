@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load humanize %}
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/calcul.css' %}">
+{% endblock %}
+{% block content %}
+    <div class="container">
+        <div class="calculator-form">
+            <h2>Roční daňová kalkulačka</h2>
+            <form method="post" class="tax-form">
+                {% csrf_token %}
+                <div class="form-group">
+                    {{ form.zakladni_mzda1.label_tag }}
+                    {{ form.zakladni_mzda1 }}
+                </div>
+                <!-- Přidání checkboxů pro slevy -->
+                <div class="form-group">
+                    {{ form.slevy1.label_tag }}
+                    {{ form.slevy1 }}
+                </div>
+                <button type="submit" class="button">Vypočítat</button>
+            </form>
+        </div>
+        {% if result %}
+            <div class="results">
+                <h3>Výsledek</h3>
+                <div class="result-item">
+                    <span class="label">Celkový hrubý příjem:</span>
+                    <span class="value">{{ result.hruba_mzda|intcomma }} Kč</span>
+                </div>
+                <div class="result-item">
+                    <span class="label">Celkové sociální pojištění hrazené zaměstnancem</span>
+                    <span class="value">{{ result.socialni_pojisteni|intcomma }} Kč</span>
+                </div>
+                <div class="result-item">
+                    <span class="label">Celkové zdravotní pojištění hrazené zaměstnancem</span>
+                    <span class="value">{{ result.zdravotni_pojisteni|intcomma }} Kč</span>
+                </div>
+                <div class="result-item">
+                    <span class="label">Celkové sociální pojištění hrazené zaměstnavatelem</span>
+                    <span class="value">{{ result.socialni_pojisteni_zamestnavatelem|intcomma }} Kč</span>
+                </div>
+                <div class="result-item">
+                    <span class="label">Celkové zdravotní pojištění hrazené zaměstnavatelem</span>
+                    <span class="value">{{ result.zdravotni_pojisteni_zamestnavatelem|intcomma }} Kč</span>
+                </div>
+                <div class="result-item">
+                    <span class="label">Celková superhrubá mzda</span>
+                    <span class="value">{{ result.superhruba_mzda|intcomma }} Kč</span>
+                </div>
+                <div class="result-item">
+                    <span class="label">Daň před slevami</span>
+                    <span class="value">{{ result.dan|intcomma }} Kč</span>
+                </div>
+                <div class="result-item">
+                    <span class="label">Daň po slevách</span>
+                    <span class="value">{{ result.dan2|intcomma }} Kč</span>
+                </div>
+                <div class="result-item">
+                    <span class="label">Celkový čistý příjem</span>
+                    <span class="value">{{ result.cista_mzda|intcomma }} Kč</span>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}

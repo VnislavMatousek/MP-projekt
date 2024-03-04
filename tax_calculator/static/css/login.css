@@ -1,0 +1,100 @@
+
+.login-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    min-height: 100vh;
+    padding: 40px 20px;
+    box-sizing: border-box;
+}
+
+.login-form {
+    width: 100%;
+    max-width: 450px;
+    padding: 40px;
+    background-color: #F7F7F7;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin-top: -140px; /* Moves the form 20px higher than center */
+}
+
+.login-form h2 {
+    margin-bottom: 30px; /* Increases space below the heading */
+    color: #333; /* Darker text for better readability */
+    font-size: 24px; /* Larger font size for the heading */
+}
+
+.form-field, .form-actions {
+    margin-bottom: 20px; /* Increases spacing between form elements */
+}
+
+.form-field input[type="text"], .form-field input[type="password"], .submit-btn {
+    width: calc(100% - 20px); /* Adjusts width accounting for padding */
+    padding: 15px; /* Larger padding for bigger input fields */
+    margin-top: 5px; /* Keeps a small top margin */
+    border: 2px solid #ccc; /* Makes the border slightly thicker */
+    border-radius: 5px; /* Rounded corners for input fields */
+    font-size: 16px; /* Larger font size for readability */
+}
+
+.submit-btn {
+    background-color: #006FB8;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-weight: bold; /* Makes the button text bold */
+    border-radius: 5px; /* Ensures the button has rounded corners */
+    transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.submit-btn:hover {
+    background-color: #005f9e; /* Slightly darker shade on hover for feedback */
+}
+
+.form-footer {
+    margin-top: 30px; /* More space above the footer links */
+    font-size: 14px; /* Adjusts font size for readability */
+}
+
+.forgot-password, .create-account {
+    color: #006FB8;
+    text-decoration: none;
+    margin-top: 10px; /* Ensures spacing between the links */
+}
+
+.create-account {
+    font-weight: bold; /* Highlights the 'Create an Account' link */
+    display: block; /* Ensures it is on its own line */
+    margin-top: 20px; /* Extra spacing above 'Create an Account' */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .login-form {
+        margin-top: -20px; /* Less negative margin for smaller screens */
+        padding: 20px; /* Smaller padding for smaller screens */
+        max-width: 90%; /* Allows the form to be more fluid on small devices */
+    }
+
+    .form-field input[type="text"],
+    .form-field input[type="password"],
+    .submit-btn {
+        padding: 10px; /* Adjust padding for smaller screens */
+    }
+
+    .login-container {
+        padding: 20px 10px; /* Smaller padding for the container on smaller screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .login-form h2 {
+        font-size: 20px; /* Smaller font size for very small screens */
+    }
+
+    .form-footer {
+        font-size: 12px; /* Smaller font size for the footer on very small screens */
+    }
+}

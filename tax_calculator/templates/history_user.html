@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load humanize %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/history.css' %}">
+{% endblock %}
+
+
+{% block content %}
+    <div class="container">
+        <!-- Move the form to the top-right of the page -->
+        <div class="form-container" style="text-align: right;">
+            <form method="get" class="form-inline">
+                {{ form.as_p }}
+                <button type="submit" class="btn btn-primary">Filter</button>
+            </form>
+        </div>
+
+        <!-- Button to jump to yearly calculations -->
+        <div class="navigation">
+            <a href="#yearly-results" class="scroll-link">Go to Yearly Results</a>
+        </div>
+
+        <h2>Monthly Calculation History</h2>
+        <div class="history-section">
+            {% for result in monthly_results %}
+                <div class="result-item">
+                    <!-- Display fields from MonthlyCalculation -->
+                    <p>Date: {{ result.created_at|date:"d M Y" }}</p>
+                    <p>Hrubá mzda: {{ result.hruba_mzda|intcomma }} Kč</p>
+                    <p>Superhrubá mzda: {{ result.superhruba_mzda|intcomma }} Kč</p>
+                    <p>Zdravotní pojištění: {{ result.zdravotni_pojisteni|intcomma }} Kč</p>
+                    <p>Sociální pojištění: {{ result.socialni_pojisteni|intcomma }} Kč</p>
+                    <p>Daň před slevami: {{ result.dan_pred_slevami|intcomma }} Kč</p>
+                    <p>Daň po slevách: {{ result.dan_po_slevach|intcomma }} Kč</p>
+                    <p>Čistá mzda: {{ result.cista_mzda|intcomma }} Kč</p>
+                </div>
+                {% empty %}
+                <p>No monthly calculation history available.</p>
+            {% endfor %}
+        </div>
+
+        <h2 id="yearly-results">Yearly Calculation History</h2>
+        <div class="history-section">
+            {% for result in yearly_results %}
+                <div class="result-item">
+                    <!-- Display fields from YearlyCalculation -->
+                    <p>Date: {{ result.created_at|date:"d M Y" }}</p>
+                    <p>Hrubá mzda: {{ result.hruba_mzda|intcomma }} Kč</p>
+                    <p>Superhrubá mzda: {{ result.superhruba_mzda|intcomma }} Kč</p>
+                    <p>Zdravotní pojištění: {{ result.zdravotni_pojisteni|intcomma }} Kč</p>
+                    <p>Sociální pojištění: {{ result.socialni_pojisteni|intcomma }} Kč</p>
+                    <p>Daň před slevami: {{ result.dan_pred_slevami|intcomma }} Kč</p>
+                    <p>Daň po slevách: {{ result.dan_po_slevach|intcomma }} Kč</p>
+                    <p>Čistá mzda: {{ result.cista_mzda|intcomma }} Kč</p>
+                </div>
+                {% empty %}
+                <p>No yearly calculation history available.</p>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

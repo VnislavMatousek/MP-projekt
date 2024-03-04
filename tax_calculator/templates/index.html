@@ -1,6 +1,73 @@
 {% extends "base.html" %}
-
+{% load static %}
 {% block content %}
-
-
+    <div class="index_home">
+        <div class="index_text">
+        <h1>Daňová kalkulačka pro fyzické osoby na rok 2024</h1>
+        <p>Lorem ipsimd dadasda asdasdj bsajbdjbsajdb jhabdjbajhdbsaj bdjhasdbk</p>
+            <a class ="začít" href={% url "index" %}>Začít</a>
+        </div>
+        <div class="index_img">
+            <img src="{% static 'images/weblep(2).png' %}">
+        </div>
+        <div class="funkce">
+            <div class="funkce-o">
+                <h3>Funkce</h3>
+                <p>sdklůjkdůlsakdammksa m</p>
+            </div>
+            <div class="proc">
+                <h3>Proč tato aplikace?</h3>
+                <p>dsnmakdksamdmk sdamndsak mndksamnkdmans</p>
+            </div>
+        </div>
+        <div class="sipka"></div>
+    </div>
+    <section class="onas">
+        <div class="onas1">
+            <h2>O nás</h2>
+            <p>sdnajjdnsaj ndsandn asjkdnkasndk lnldknsak ndksandk nasknd kalnkld asnk</p>
+        </div>
+        <div class="box">
+            <!--box-1-------->
+            <div class="boxik">
+                <img src="{% static 'images/login.svg' %}">
+                <font>Log-In to our secure website</font>
+                <p>To begin the process, please Log-In to our secure system. Everything you need to Log-In is available in the communication letter you have received from us.</p>
+                <!--btn--------->
+                <a href={% url "index" %}>Login</a>
+            </div>
+            <!--box-2-------->
+            <div class="boxik">
+                <img src="{% static 'images/account view.svg' %}">
+                <font>View Your Website</font>
+                <p>You will have a chance to review your account for accuracy and update your contact information. Should you find any incorrect information on your account or if you prefer to talk to us directly, please Contact Us.</p>
+                <!--btn--------->
+                <a href={% url "index" %}>View</a>
+            </div>
+            <!--box-3-------->
+            <div class="boxik">
+                <img src="{% static 'images/payment method.svg' %}">
+                <font>Select Your Plan</font>
+                <p>In addition to the payment in full, we may offer you a discount for making online payments, allow you to schedule payments over time, or have you define the payment terms that best work for your particular situation.</p>
+                <!--btn--------->
+                <a href={% url "index" %}>Select plan</a>
+            </div>
+            <!--box-4-------->
+            <div class="boxik">
+                <img src="{% static 'images/lock.svg' %}">
+                <font>Login in secure website</font>
+                <p>You can make secure online payments from the privacy of your home 24/7.</p>
+                <!--btn--------->
+                <a href={% url "index" %}>Login</a>
+            </div>
+            <!--box-1-------->
+            <div class="boxik">
+                <img src="{% static 'images/document.svg' %}">
+                <font>Confrim Your Websites</font>
+                <p>When you make payment(s), we will issue you an electronic receipt. You can also log in any time to get the most up-to-date receipt</p>
+                <!--btn--------->
+               <a href={% url "index" %}>View</a>
+            </div>
+        </div>
+    </section>
 {% endblock %}

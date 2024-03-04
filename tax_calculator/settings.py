@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "django_extensions",
     "tax_calculator.tax",
+    "django.contrib.humanize",
 ]
 
 MIDDLEWARE = [

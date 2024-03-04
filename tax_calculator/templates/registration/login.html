@@ -1,15 +1,30 @@
 {% extends "base.html" %}
+{% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+{% endblock %}
 
 {% block content %}
-    <h1>{% block title %}Přihlášení{% endblock %}</h1>
-
-    <form method="post" action=".">
-        {% csrf_token %}
-        <table>
-            {{ form.as_table }}
-        </table>
-        <input type="submit" value="Přihlásit">
-        <input type="hidden" name="next" value="{{ next }}">
-    </form>
-
+    <div class="login-container">
+        <form method="post" action="." class="login-form">
+            {% csrf_token %}
+            <h2>Příhlásit se</h2>
+            <div class="form-field">
+                {{ form.username.label_tag }}
+                {{ form.username }}
+            </div>
+            <div class="form-field">
+                {{ form.password.label_tag }}
+                {{ form.password }}
+            </div>
+            <div class="form-actions">
+                <input type="submit" value="Příhlásit" class="submit-btn">
+            </div>
+            <div class="form-footer">
+                <a class="forgot-password" href="{% url "password_change" %}">Forgot Password?</a>
+                Not a Member? <a class="create-account" href="{% url "registration" %}">Create an Account</a>
+            </div>
+        </form>
+    </div>
 {% endblock %}

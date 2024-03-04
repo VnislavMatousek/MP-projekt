@@ -19,78 +19,584 @@ a{
 }
 nav {
     display: flex;
-    align-items: center; /* Updated to center the content vertically */
-    justify-content: space-between;
+    align-items: center; /* Keep content vertically centered */
+    justify-content: space-around;
     padding: 10px 30px;
     background-color: white;
     box-shadow: 2px 2px 20px rgba(90, 118, 253, 0.13);
     z-index: 1;
     width: 100%;
-
 }
 
 .maintext {
-    font-size: 1.8rem; /* Adjust the font size as needed */
-    font-weight: bold;
-    color: limegreen;
-    text-transform: uppercase;
+    height: 10px; /* Adjusted to a typical navbar height, change as needed */
+    width: auto; /* Adjust based on your logo's aspect ratio */
+    display: flex; /* Ensures the content inside is properly centered */
+    align-items: center; /* Center content vertically */
+    justify-content: center; /* Center content horizontally */
 }
 
-.maintext a {
-    text-decoration: none;
-    color: inherit; /* Inherit the color from the parent (.maintext) */
+/* If your logo is an image, add this */
+.maintext img {
+    max-height: 70px; /* Adjust the logo to fit the height of .maintext */
+    width: auto; /* Adjust the width automatically to keep aspect ratio */
 }
 
 nav ul {
     display: flex;
     margin: 0;
+    padding: 0;
 }
 
 nav ul li a {
-    height: 35px;
-    line-height: 40px;
-    margin: 10px;
-    padding: 0 13px;
+    height: 40px;
+    line-height: 43px;
+    margin: 8px;
+    padding: 0 22px;
     display: flex;
-    font-size: 0.6rem;
+    font-size: 0.9rem;
     text-transform: uppercase;
+    font-weight: 400;
     color: black;
     letter-spacing: 1px;
-    border: 1px solid green;
-    border-radius: 10px;
-    position: relative;
-    overflow: hidden;
-    width: 121px;
-    justify-content: center;
-}
-
-nav ul li a {
-    z-index: 1;
-}
-
-nav ul li a:after {
-    position: absolute;
-    content: "";
-    width: 0;
-    height: 100%;
-    top: 0;
-    right: 0;
-    z-index: -1;
-    background-color: darkseagreen;
-    transition: all 0.3s ease;
 }
 
 nav ul li a:hover {
-    color: black;
-    transform: scale(1.050);
+    background-color: #006FB8;
+    color: white;
+    box-shadow: 5px 10px 30px rgba(90,118,253,0.5);
+    transition: all ease 0.2s;
+    border-radius: 10px;
+}
+.index_home{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    position: absolute;
+    left: 50%;
+    top:40%;
+    transform: translate(-50%,-50%);
+    width:90%;
+
+}
+.index_img {
+    width: 600px; /* Increased width for a larger picture */
+    height: 500px; /* Increased height for a larger picture */
+    margin: -150px; /* Center the image container horizontally */
+    display: flex; /* Ensures the container can use flex properties */
+    justify-content: center; /* Centers the image horizontally */
+    align-items: center; /* Centers the image vertically */
+
 }
 
-nav ul li a:hover:after {
-    left: 0;
-    width: 100%;
+.index_img img {
+    max-width: 100%; /* Ensures the image does not exceed its container's width */
+    max-height: 100%; /* Ensures the image does not exceed its container's height */
+    object-fit: contain; /* Ensures the image's aspect ratio is preserved */
+    object-position: center; /* Centers the image within its container */
+}
+.index_text{
+    width:500px;
+    margin:20px;
+}
+.index_text h1{
+    font-size: 3.5rem;
+    line-height: 55px;
+    color:#22252e;
+    letter-spacing: 1px;
+    font-weight: 700;
+    margin: 0px;
+}
+.index_text p{
+    font-size: 1rem;
+    color:#777474;
+}
+.začít{
+    width: 120px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #006FB8;
+    color: white;
+    box-shadow: 5px 10px 30px rgba(90,118,253,0.5);
+    text-transform: uppercase;
+}
+.začít:hover{
+    background-color: #006FB8;
+    border-radius: 10px;
+    transition: all ease 0.3s;
+}
+.funkce{
+    position: absolute;
+    left:20%;
+    bottom: -200px;
+    transform: translateX(-20%);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.funkce-o,
+.proc{
+    margin: 0px 20px;
+}
+.funkce-o h3,
+.proc h3{
+    font-weight: 700;
+    color:#22252e;
+    font-size: 1.6rem;
+    margin: 0px;
+}
+.funkce-o p,
+.proc p{
+    color:#777474;
+    font-size: 1.1rem;
 }
 
-nav ul li a:active {
-    top: 2px;
+.sipka{
+    align-self: end;
+    width:50%;
+    border-right: 1px solid #006FB8;
+    height: 40%;
+    margin-bottom:-15% ;
+    position: absolute;
+    bottom: 5px;
+    right: 70px;
+    animation: arrow-animation ease 1.5s;
+
 }
+.sipka::after{
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 11px 11px 0px 11px;
+    border-color: #006FB8 transparent transparent transparent;
+    right: -0.7em;
+    bottom: -2px;
+}
+
+@keyframes arrow-animation{
+    0%{
+        bottom: 70px;
+        opacity: 0.2;
+    }
+    100%{
+        bottom: 5px;
+        opacity: 1;
+    }
+}
+
+
+.onas{
+    background-size: 1000px;
+    background-position: center;
+}
+.onas1{
+    margin-top: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+}
+.onas1 h2{
+    line-height: 55px;
+    font-size: 2.2rem;
+    color:#22252e;
+    letter-spacing: 1px;
+    font-weight: 700;
+    margin: 0px;
+}
+.onas1 p{
+    font-size: 1rem;
+    color:#777474;
+    width:50%;
+}
+
+.box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 20px 30px;
+}
+.boxik{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width:500px;
+    height: 400px;
+    text-align: center;
+    box-shadow: 2px 2px 20px rgba(90,118,253,0.15);
+    border-radius: 10px;
+    background-color: #fff;
+    margin: 20px;
+    flex-grow: 1;
+}
+.boxik img{
+    height:150px;
+    margin:10px;
+}
+.boxik font{
+    font-size: 1.5rem;
+    color: #22252e;
+    letter-spacing: 1px;
+    font-weight: 700;
+}
+.boxik p{
+    font-size: 1rem;
+    color: #777474;
+    display: block;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 500px;
+}
+.boxik a{
+    width:150px;
+    height:40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #006FB8;
+    text-transform: uppercase;
+    margin: auto;
+    border-radius: 5px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    color:#006FB8;
+    margin:0px;
+}
+.boxik a:hover{
+    background-color: #006FB8;
+    color:#fff;
+    box-shadow: 5px 10px 30px rgba(90,118,253,0.5);
+    transition: all ease 0.3s;
+}
+
+
+
+.konec{
+    max-width: 1170px;
+    margin:auto;
+}
+.rada{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.footer{
+    background-color: #24262b;
+    padding: 70px 0;
+}
+.footer-sloup{
+    width: 25%;
+    padding: 0 15px;
+}
+.footer-sloup h4{
+    font-size: 18px;
+    color: #ffffff;
+    text-transform: capitalize;
+    margin-bottom: 35px;
+    font-weight: 500;
+    position: relative;
+}
+.footer-sloup h4::before{
+    content: '';
+    position: absolute;
+    left:0;
+    bottom: -10px;
+    background-color: #006FB8;
+    height: 2px;
+    box-sizing: border-box;
+    width: 50px;
+}
+.footer-sloup ul li:not(:last-child){
+    margin-bottom: 10px;
+}
+.footer-sloup ul li a{
+    font-size: 16px;
+    text-transform: capitalize;
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 300;
+    color: #bbbbbb;
+    display: block;
+    transition: all 0.3s ease;
+}
+.footer-sloup ul li a:hover{
+    color: #006FB8;
+    padding-left: 8px;
+}
+.footer-sloup .social-links a{
+    display: inline-block;
+    height: 40px;
+    width: 40px;
+    background-color: rgba(255,255,255,0.2);
+    margin:0 10px 10px 0;
+    text-align: center;
+    line-height: 40px;
+    border-radius: 50%;
+    color: #ffffff;
+    transition: all 0.5s ease;
+}
+.footer-sloup .social-links a:hover{
+    color: #24262b;
+    background-color: #006FB8;
+}
+
+/*responsive*/
+@media(max-width: 767px){
+    .footer-sloup{
+        width: 50%;
+        margin-bottom: 30px;
+    }
+}
+@media(max-width: 574px){
+    .footer-sloup{
+        width: 100%;
+    }
+}
+
+nav .menu-btn{
+    display: none;
+}
+@media(max-width:1100px){
+    /* Base styles for nav */
+    nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 65px;
+        position: relative; /* Ensure that the absolute positioning of children is relative to nav */
+    }
+
+    nav ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        position: absolute;
+        top: 65px;
+        left: 0;
+        width: 100%;
+        flex-direction: column; /* Stack items vertically */
+        background-color: #fff;
+        border-top: 4px solid #006FB8; /* Adjust based on your design */
+        display: none; /* Hide by default */
+    }
+
+    nav ul li {
+        text-align: center; /* Center-align list items */
+        width: 100%;
+    }
+
+    nav ul li a {
+        display: block; /* Make links fill their list item container */
+        width: 100%;
+        padding: 15px 25px; /* Adjust padding */
+        border-bottom: 1px solid rgba(38,38,38,0.03); /* Add a subtle border to each item */
+        background-color: transparent; /* Optional: set a background color */
+        color: #333; /* Text color */
+    }
+
+    /* Menu icon styles */
+    nav .menu-icon {
+        cursor: pointer;
+        margin-right: 50px;
+    }
+
+    /* Hamburger icon */
+    nav .nav-icon, nav .nav-icon:before, nav .nav-icon:after {
+        background-color: #333;
+        display: block;
+        height: 2px;
+        position: absolute;
+        width: 25px; /* Width of the hamburger lines */
+        transition: all 0.2s ease-out;
+    }
+
+    nav .nav-icon:before, nav .nav-icon:after {
+        content: '';
+        position: absolute;
+    }
+
+    nav .nav-icon:before {
+        top: -8px;
+    }
+
+    nav .nav-icon:after {
+        top: 8px;
+    }
+
+    /* Toggle menu display */
+    nav .menu-btn:checked ~ ul {
+        display: flex; /* Show menu */
+    }
+
+    /* Transform hamburger into "X" */
+    nav .menu-btn:checked ~ .menu-icon .nav-icon {
+        background: transparent;
+    }
+
+    nav .menu-btn:checked ~ .menu-icon .nav-icon:before {
+        transform: rotate(-45deg);
+        top: 0;
+    }
+
+    nav .menu-btn:checked ~ .menu-icon .nav-icon:after {
+        transform: rotate(45deg);
+        top: 0;
+    }
+
+    .index_img{
+        display: none;
+    }
+    .index_text{
+        width:100%;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        height: 45vh;
+        margin: 0px;
+        background-color: rgba(33,33,33,0.35);
+    }
+    .index_home{
+        width:100%;
+        margin:0px;
+        position: static;
+        transform: translate(0px,70px);
+        background-image: url("../images/taste.png");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: top right;
+        box-shadow: 2px 2px 30px rgba(90,118,253,0.15);
+    }
+    .sipka,.posun{
+        display: none;
+    }
+    .index_text h1{
+        color:#fff;
+        padding: 0px 20px;
+        font-size: 2.5rem;
+        border: 1px solid #fff;
+    }
+    .index_text p{
+        color:rgba(255,255,255,0.85);
+        margin: 10px 0px 20px 0px;
+        width:50%;
+    }
+
+}
+@media(max-width:720px){
+    .index_text p {
+        width: 70%;
+        text-align: center;
+        margin: 20px auto; /* Center text blocks and add vertical spacing */
+    }
+
+    /* Adjust the .funkce section to layout its children in a row */
+    .funkce {
+        width: 100%;
+        display: flex;
+        flex-direction: row; /* Align items in a row */
+        flex-wrap: wrap; /* Allow items to wrap */
+        justify-content: space-around; /* Distribute space around items */
+        align-items: center; /* Align items vertically */
+        margin: 20px 0; /* Adjust margin for spacing */
+        padding: 0 20px; /* Adjust padding for internal spacing */
+    }
+
+    .funkce-o, .proc {
+        flex-grow: 1;
+        flex-basis: 45%; /* Assign a base width to prevent overlap */
+        margin: 10px; /* Ensure some spacing */
+        text-align: center; /* Center-align the text for readability */
+    }
+
+    .funkce-o h3, .proc h3 {
+        font-size: 1rem;
+    }
+
+    .funkce-o p, .proc p {
+        font-size: 0.8rem;
+    }
+
+    .sipka, .posun {
+        display: none; /* Hide elements that might not fit well on small screens */
+    }
+
+    .index_home h1 {
+        font-size: 1.9rem;
+        padding: 10px;
+        line-height: 30px;
+    }
+
+    /* Adjust .onas1 positioning relative to .funkce and .boxik */
+    .onas1 {
+        margin: 250px auto auto; /* Reduced top margin to bring .onas1 closer to .funkce */
+        padding: 20px 0; /* Maintain vertical padding */
+    }
+
+    .onas1 h2 {
+        font-size: 1.7rem;
+        line-height: 40px;
+    }
+
+    .onas1 p {
+        width: 100%; /* Full width for paragraph */
+    }
+
+    /* Adjustments for .boxik to ensure it is closer to .onas1 */
+    .boxik {
+        width: 100%;
+        margin: 20px 0 0 0; /* Reduce top margin to bring .boxik closer to .onas1 */
+        padding: 20px; /* Maintain content padding */
+    }
+
+    .boxik img {
+        max-width: 100%; /* Full width for image */
+        height: auto; /* Adjust height automatically */
+        object-fit: cover; /* Ensure full cover fit */
+    }
+}
+
+
+/* Show menu icon and adjust layout for smaller screens */
+@media screen and (max-width: 768px) {
+    nav .menu-icon {
+        display: block;
+        position: absolute;
+        right: 20px;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    nav ul {
+        position: absolute;
+        flex-direction: column;
+        display: none; /* Hide menu initially */
+        top: 65px; /* Adjust top position to nav height */
+        left: 0;
+        right: 0; /* Ensure full width */
+        z-index: 999; /* Ensure menu is above other content */
+    }
+
+    nav ul li a {
+        padding: 10px 15px; /* Adjust padding for smaller screens */
+        border: none; /* Optional: remove borders */
+    }
+}
+
+
+
+
+
+
 
