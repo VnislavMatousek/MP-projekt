@@ -25,7 +25,7 @@
             <li><a href="{% url "calculate_tax" %}">Měsíční</a></li>
             <li><a href="{% url "calculate_tax2" %}">Roční</a></li>
             <li><a href="{% url "result_history" %}">Historie</a></li>
-            <li><a href="{% url "calculate_tax3" %}">Novinky</a></li>
+            <li><a href="{% url "novinky" %}">Novinky</a></li>
             {% if user.is_authenticated %}
                 {% if user.is_staff %}
                     <li><a href="{% url "admin:index" %}">Admin page</a></li>

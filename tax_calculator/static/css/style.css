@@ -81,11 +81,12 @@ nav ul li a:hover {
 }
 .index_img {
     width: 600px; /* Increased width for a larger picture */
-    height: 500px; /* Increased height for a larger picture */
+    height: 480px; /* Increased height for a larger picture */
     margin: -150px; /* Center the image container horizontally */
     display: flex; /* Ensures the container can use flex properties */
     justify-content: center; /* Centers the image horizontally */
     align-items: center; /* Centers the image vertically */
+    margin-top: -70px;
 
 }
 

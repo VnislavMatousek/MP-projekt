@@ -13,6 +13,9 @@ from .models import CalculationResult, CalculationResultYear
 def index(request):
     return render(request, "index.html")
 
+def novinky(request):
+    return render(request, "novinky.html")
+
 def calculate_tax(request):
     context = {'form': None, 'result': None}
 

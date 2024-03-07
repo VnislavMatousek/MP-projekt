@@ -1,0 +1,153 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/novinky.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="maint">
+        <h1 class="nazev">Daňové a účetní změny: přehled novinek od roku 2024</h1>
+        <h3 class="datum">1.1.2024</h3>
+            <img class="obrazok" src="{% static 'images/office.jpg' %}">
+            <i><p class="mini">V rámci konsolidace veřejných financí vláda představila opatření, která mají pomoci předlužené státní kase, tzv.<br>
+                konsolidační či ozdravný balíček. Ve středu 22. listopadu 2023 ho podepsal prezident a následně byl<br>
+                zveřejněn ve Sbírce zákonů. Většina úprav se týká daní a dalších povinných odvodů. Přečtěte si, jaké hlavní<br>
+                změny platí od 1. ledna 2024 (pokud není u jednotlivých bodů uvedeno jinak).</p></i>
+        <h2 class="mensi">ODVODY A DAŇ Z PŘÍJMŮ FYZICKÝCH OSOB:</h2>
+        <h3 class="jestemensi">ZMĚNY PRO VŠECHNY</h3>
+        <div class="red-line"></div>
+        <ul class="textik">
+            <li>zrušení školkovného a slevy na studenta; </li>
+            <li>omezení slevy na dani na manžela/ku jen na péči o dítě do 3 let věku; </li>
+            <li>posun prahu pro progresivní 23% sazbu daně ze čtyřnásobku na trojnásobek průměrné mzdy (od ledna<br>
+                2024 bude tedy platit nová hranice příjmu 1 582 812 Kč za rok, resp. 131 901 Kč za měsíc); </li>
+            <li>sjednocení limitu daňového odpočtu za vklady na penzijní spoření a kapitálové životní pojištění, přičemž<br>
+                je možné tento odpočet uplatnit i na nový nástroj zajištění na stáří, tzv. dlouhodobý investiční produkt<br>
+                (DIP) – celkem lze ze základu daně odečíst až 48 000 Kč ročně (limit je společný pro všechny tři produkty); </li>
+            <li>zvýšení hranice pro osvobození bezúplatných příjmů (darů) z 15 000 Kč na 50 000 Kč ročně; </li>
+            <li>zavedení omezení ve výši 40 mil. Kč v případě aplikace osvobození příjmů z prodeje cenných papírů<br>
+                nebo podílu při splnění časového testu (platné od roku 2025 – u podílů a akcií nabytých do konce roku<br>
+                2024 bude možné použít speciální definici pro nabývací cenu); </li>
+            <li>snížení limitu pro osvobození výhry z loterie či tomboly z 1 mil. Kč na 50 000 Kč. </li>
+        </ul>
+        <h3 class="jestemensi">ZMĚNY PRO ZAMĚSTNANCE</h3>
+        <div class="red-line"></div>
+        <ul class="textik">
+            <li>znovuzavedení odvodu nemocenského pojistného ze mzdy zaměstnanců ve výši 0,6 %<br>
+                (zaměstnavatel bude za své zaměstnance dál odvádět 2,1 % jako dosud);</li>
+            <li>omezení zaměstnaneckých nepeněžních benefitů (příspěvky na sportovní a kulturní akce, použití<br>
+                vzdělávacích nebo rekreačních zařízení apod.) na polovinu průměrné mzdy za rok – v roce 2024 tedy<br>
+                budou osvobozeny do výše 21 983 Kč (pokud zaměstnanci během roku vyčerpají vyšší hodnotu benefitů,<br>
+                rozdíl bude třeba dodanit a odvést z něj i zdravotní a sociální pojištění);</li>
+            <li>zastropování úlev z odvodů pro dohody o provedení práce a zavedení evidence DPP; </li>
+            <li>úprava sazeb pro dodanění služebních aut využívaných i pro osobní účely zaměstnanců – dosud<br>
+                dodaňovaný nepeněžní příjem ve výši 1 % z ceny vozidla bude nově rozdělen na další dvě sazby podle<br>
+                emisní třídy vozu (pro nízkoemisní vozidla bude platit sazba 0,5 %, pro bezemisní pak pouze 0,25 %); </li>
+            <li>sjednocení osvobození příspěvků na stravování do výše 70 % stravného pro pracovní cestu dlouhou 5–12<br>
+                hodin (tj. 107,10 Kč) bez ohledu na formu (stravování zajištěné na pracovišti, stravenky, stravenkový<br>
+                paušál) – zcela se ruší známé pravidlo daňové uznatelnosti stravenky do 55 % její hodnoty; </li>
+            <li>zrušení daňového odpočtu za příspěvky odborové organizaci; </li>
+            <li>zrušení osvobození od daně u bezúplatného plnění do výše 2 000 Kč za rok a sociální výpomoci na<br>
+                překlenutí mimořádně obtížných poměrů. </li>
+        </ul>
+        <h2 class="mensi">ÚČETNICTVÍ:</h2>
+        <h3 class="jestemensi">Změny pro všechny</h3>
+        <div class="red-line"></div>
+        <ul class="textik">
+            <li>změna výpočtu čistého obratu;</li>
+            <li>možnost vedení účetnictví v tzv. funkční měně – britských librách, eurech nebo amerických dolarech;</li>
+            <li>zavedení povinnosti sestavovat zprávu o udržitelnosti.</li>
+        </ul>
+        <h2 class="mensi">Slevy na dani</h2>
+        <h3 class="jestemensi">Měsíční</h3>
+        <div class="red-line"></div>
+        <table class="tables">
+            <tr>
+                <th>sleva</th>
+                <th>měsíčně v Kč</th>
+            </tr>
+            <tr>
+                <td>sleva na poplatníka</td>
+                <td>2,570 Kč</td>
+            </tr>
+            <tr>
+                <td>sleva na první dítě</td>
+                <td>1,267 Kč</td>
+            </tr>
+            <tr>
+                <td>sleva na druhé dítě</td>
+                <td>1,860 Kč</td>
+            </tr>
+            <tr>
+                <td>sleva na třetí a další dítě</td>
+                <td>2,320 Kč</td>
+            </tr>
+            <tr>
+                <td>sleva na invaliditu 1. a 2. stupně</td>
+                <td>210 Kč</td>
+            </tr>
+            <tr>
+                <td>sleva na invaliditu 3. stupně</td>
+                <td>420 Kč</td>
+            </tr>
+            <tr>
+                <td>sleva u držitele průkazu ZTP/P</td>
+                <td>1,345 Kč</td>
+            </tr>
+            <tr>
+                <td>sleva na manžela/ku pečující o dítě do 3 let</td>
+                <td>2,070 Kč</td>
+            </tr>
+            <tr>
+                <td>sleva na manžela ZTP/P pečující o dítě do 3 let (s příjmem nižším 68.000 Kč ročně)</td>
+                <td>4,140 Kč</td>
+            </tr>
+        </table>
+        <h3 class="jestemensi">Roční</h3>
+        <div class="red-line"></div>
+        <table class="tables">
+            <tr>
+                <th>sleva</th>
+                <th>měsíčně v Kč</th>
+            </tr>
+            <tr>
+                <td>sleva na poplatníka</td>
+                <td>30,840 Kč</td>
+            </tr>
+            <tr>
+                <td>sleva na první dítě</td>
+                <td>15,204 Kč</td>
+            </tr>
+            <tr>
+                <td>sleva na druhé dítě</td>
+                <td>22,320 Kč</td>
+            </tr>
+            <tr>
+                <td>sleva na třetí a další dítě</td>
+                <td>27,840 Kč</td>
+            </tr>
+            <tr>
+                <td>sleva na invaliditu 1. a 2. stupně</td>
+                <td>2,520 Kč</td>
+            </tr>
+            <tr>
+                <td>sleva na invaliditu 3. stupně</td>
+                <td>5,040 Kč</td>
+            </tr>
+            <tr>
+                <td>sleva u držitele průkazu ZTP/P</td>
+                <td>16,140 Kč</td>
+            </tr>
+            <tr>
+                <td>sleva na manžela/ku pečující o dítě do 3 let</td>
+                <td>24,840 Kč</td>
+            </tr>
+            <tr>
+                <td>sleva na manžela ZTP/P pečující o dítě do 3 let (s příjmem nižším 68.000 Kč ročně)</td>
+                <td>49,680 Kč</td>
+            </tr>
+        </table>
+    </div>
+
+{% endblock %}

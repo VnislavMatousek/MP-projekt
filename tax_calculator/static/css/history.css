@@ -39,22 +39,22 @@ h2 {
 .btn-primary {
     display: inline-block;
     background-color: #006FB8;
-    border-color: #006FB8; /* You can remove this if there's no border needed */
     color: white;
-    padding: 10px 20px;
-    margin-bottom: 20px;
-    border-radius: 5px; /* Assuming your .scroll-link has rounded corners */
-    transition: background-color 0.3s;
+    padding: 5px 10px;
+    margin-bottom: 5px;
+    transition: background-color 0.3s, box-shadow 0.3s; /* Add box-shadow transition */
     text-decoration: none; /* If you want to remove underline from text */
-    font-size: 16px; /* Adjust the font size as needed */
+    font-size: 13px; /* Adjust the font size as needed */
     cursor: pointer; /* Change the cursor to pointer to indicate it's clickable */
+    border-radius: 5px;
+    border: none; /* Remove border if not needed */
 }
 
 .btn-primary:hover, .btn-primary:focus {
     background-color: #004885;
-    border-color: #004885; /* Change the border color on hover, remove if not needed */
     text-decoration: none; /* Keeps text from being underlined when hovered */
-    outline: none; /* Removes the outline to maintain the style on focus */
+    outline: none; /* Removes the black outline */
+    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.5); /* Add a blue glow for accessibility */
 }
 
 /* Make the form responsive */
@@ -116,4 +116,6 @@ h2 {
     background-color: #004885;
     text-decoration: none; /* Removes underline from links */
 }
+
+
 
