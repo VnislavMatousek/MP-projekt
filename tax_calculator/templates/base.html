@@ -7,6 +7,7 @@
         <link rel="icon" type="image/x-icon" href="{% static '/images/minilogo.png' %}">
         <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
         <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/line-awesome/1.3.0/line-awesome/css/line-awesome.min.css">
         {% block extra_css %}{% endblock %}
     </head>
     <body>
@@ -74,14 +75,43 @@
                 <div class="footer-sloup">
                     <h4>follow us</h4>
                     <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://www.facebook.com/?locale=cs_CZ"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://twitter.com/?lang=cs"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.instagram.com/"><i class="fab fa-instagram"></i></a>
+                        <a href="https://cz.linkedin.com/"><i class="fab fa-linkedin-in"></i></a>
                     </div>
                 </div>
             </div>
         </div>
+        <script>
+            document.addEventListener('DOMContentLoaded', (event) => {
+                // Check if results are already present on page load and scroll to them
+                const resultsSection = document.getElementById('results-section');
+                if (resultsSection && resultsSection.textContent.trim() !== '') {
+                    scrollToResults();
+                }
+
+                const form = document.querySelector('.tax-form');
+                if (form) {
+                    form.addEventListener('submit', function(e) {
+                        e.preventDefault(); // Prevent default form submission initially
+
+                        // Submit the form with AJAX or similar method here
+                        // For now, we will simulate form submission by waiting then scrolling
+                        setTimeout(() => {
+                            form.submit(); // This will refresh the page or update content
+                            // If using AJAX, put scrollToResults() in the success callback instead
+                        }, 500); // Simulate async operation like server request
+                    });
+                }
+
+                function scrollToResults() {
+                    if (resultsSection) {
+                        resultsSection.scrollIntoView({behavior: 'smooth'});
+                    }
+                }
+            });
+        </script>
     </footer>
     </body>
 </html>

@@ -19,11 +19,23 @@
                     {{ form.slevy1.label_tag }}
                     {{ form.slevy1 }}
                 </div>
+                <div class="form-group">
+                    {{ form.deti1.label_tag }}
+                    {{ form.deti1 }}
+                </div>
+                <div class="form-group">
+                    {{ form.invalidita1.label_tag }}
+                    {{ form.invalidita1 }}
+                </div>
+                <div class="form-group">
+                    {{ form.ztp1.label_tag }}
+                    {{ form.ztp1 }}
+                </div>
                 <button type="submit" class="button">Vypočítat</button>
             </form>
         </div>
         {% if result %}
-            <div class="results">
+            <div class="results" id="results-section">
                 <h3>Výsledek</h3>
                 <div class="result-item">
                     <span class="label">Celkový hrubý příjem:</span>

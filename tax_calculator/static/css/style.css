@@ -112,21 +112,36 @@ nav ul li a:hover {
     font-size: 1rem;
     color:#777474;
 }
-.začít{
-    width: 120px;
-    height: 40px;
-    display: flex;
-    justify-content: center;
+.začít {
+    display: inline-flex;
     align-items: center;
-    background-color: #006FB8;
-    color: white;
-    box-shadow: 5px 10px 30px rgba(90,118,253,0.5);
+    margin: 10px;
+    padding: 12px 24px;
+    color: black;
+    border: 1px solid black;
+    border-radius: 50px;
+    font-weight: 500;
+    letter-spacing: 0.4px;
     text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
 }
-.začít:hover{
-    background-color: #006FB8;
-    border-radius: 10px;
-    transition: all ease 0.3s;
+
+.začít i {
+    margin-left: 12px;
+    font-size: 24px;
+    transform: rotate(-45deg);
+    transition: transform 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.začít:hover i {
+    transform: rotate(0);
+}
+
+.začít:hover {
+    color: #006FB8;
+    border-color: #006FB8;
+    box-shadow: 0 5px 0 0 #006FB8;
 }
 .funkce{
     position: absolute;
@@ -483,15 +498,16 @@ nav .menu-btn{
         display: none;
     }
     .index_text h1{
-        color:#fff;
+        color: black;
         padding: 0px 20px;
         font-size: 2.5rem;
-        border: 1px solid #fff;
+
     }
     .index_text p{
-        color:rgba(255,255,255,0.85);
+        color:#FDFEFF;
         margin: 10px 0px 20px 0px;
         width:50%;
+        text-shadow: 1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000;
     }
 
 }

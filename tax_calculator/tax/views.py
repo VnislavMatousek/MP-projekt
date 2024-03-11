@@ -42,21 +42,43 @@ def calculate_tax(request):
 
             slevy_hodnoty = {
                 'poplatnik': 2570,
-                'prvni_dite': 1267,
-                'druhe_dite': 1860,
-                'treti_dite': 2320,
-                'invalidita1_2': 210,
-                'invalidita3': 420,
                 'ztp_p': 1345,
-                'pecujici_manžel': 2070,
-                'ztp_p_pecujici': 4140,
                 # Doplnit další slevy podle potřeby
             }
 
-            # Výpočet celkové slevy na dani z příjmů
+            deti_hodnoty = {
+                'bezdětný': 0,
+                'prvni_dite': 1267,
+                'druhe_dite': 1860,
+                'treti_dite': 2320,
+            }
+
+            invalidita_hodnoty = {
+                'bezinvalidity': 0,
+                'invalidita1_2': 210,
+                'invalidita3': 420,
+            }
+
+            ztp_hodnoty = {
+                'bez': 0,
+                'pecujici_manžel': 2070,
+                'ztp_p_pecujici': 4140,
+            }
+
             total_deduction = 0
-            for sleva in form.cleaned_data['slevy']:  # Iterace přes vybrané slevy
-                total_deduction += slevy_hodnoty.get(sleva, 0)
+
+# Ensure both slevy and deti are lists before concatenating
+            slevy_list = form.cleaned_data['slevy'] if isinstance(form.cleaned_data['slevy'], list) else [form.cleaned_data['slevy']]
+            deti_list = form.cleaned_data['deti'] if isinstance(form.cleaned_data['deti'], list) else [form.cleaned_data['deti']]
+            invalidita_list = form.cleaned_data['invalidita'] if isinstance(form.cleaned_data['invalidita'], list) else [form.cleaned_data['invalidita']]
+            ztp_list = form.cleaned_data['ztp'] if isinstance(form.cleaned_data['ztp'], list) else [form.cleaned_data['ztp']]
+
+# Spojení seznamů slev a dětských slev
+            all_slevy = slevy_list + deti_list + invalidita_list + ztp_list
+
+# Iterace přes všechny vybrané slevy a slevy na děti
+            for sleva in all_slevy:
+                total_deduction += slevy_hodnoty.get(sleva, 0) + deti_hodnoty.get(sleva, 0) + invalidita_hodnoty.get(sleva, 0) + ztp_hodnoty.get(sleva, 0)
 
             # Výpočet daně před slevami
             tax_rate = 0.23 if zakladni_mzda >= 131901 else 0.15
@@ -130,23 +152,43 @@ def calculate_tax_rok(request):
             # a zde jsou jejich hodnoty
             slevy_hodnoty = {
                 'poplatnik': 30840,
-                'prvni_dite': 15204,
-                'druhe_dite': 22320,
-                'treti_dite': 27840,
-                'invalidita1_2': 2520,
-                'invalidita3': 5040,
                 'ztp_p': 16140,
-                'pecujici_manžel': 24840,
-                'ztp_p_pecujici': 49680,
                 # Doplnit další slevy podle potřeby
             }
 
-            # Výpočet celkové slevy na dani z příjmů
-            total_deduction = 0
-            selected_slevy = form.cleaned_data.get('slevy1', [])  # Seznam vybraných slev
-            for sleva in selected_slevy:  # Iterace přes vybrané slevy
-                total_deduction += slevy_hodnoty.get(sleva, 0)
+            deti_hodnoty = {
+                'bezdětný': 0,
+                'prvni_dite': 1267,
+                'druhe_dite': 1860,
+                'treti_dite': 2320,
+            }
 
+            invalidita_hodnoty = {
+                'bezinvalidity': 0,
+                'invalidita1_2': 210,
+                'invalidita3': 420,
+            }
+
+            ztp_hodnoty = {
+                'bez': 0,
+                'pecujici_manžel': 2070,
+                'ztp_p_pecujici': 4140,
+            }
+
+            total_deduction = 0
+
+        # Ensure both slevy and deti are lists before concatenating
+            slevy_list = form.cleaned_data['slevy1'] if isinstance(form.cleaned_data['slevy1'], list) else [form.cleaned_data['slevy1']]
+            deti_list = form.cleaned_data['deti1'] if isinstance(form.cleaned_data['deti1'], list) else [form.cleaned_data['deti1']]
+            invalidita_list = form.cleaned_data['invalidita1'] if isinstance(form.cleaned_data['invalidita1'], list) else [form.cleaned_data['invalidita1']]
+            ztp_list = form.cleaned_data['ztp1'] if isinstance(form.cleaned_data['ztp1'], list) else [form.cleaned_data['ztp1']]
+
+        # Spojení seznamů slev a dětských slev
+            all_slevy = slevy_list + deti_list + invalidita_list + ztp_list
+
+        # Iterace přes všechny vybrané slevy a slevy na děti
+            for sleva in all_slevy:
+                total_deduction += slevy_hodnoty.get(sleva, 0) + deti_hodnoty.get(sleva, 0) + invalidita_hodnoty.get(sleva, 0) + ztp_hodnoty.get(sleva, 0)
 
             if zakladni_mzda >= 1582812:
                 tax_rate = 0.23
@@ -240,3 +282,15 @@ def history(request):
         'monthly_results': monthly_results,
         'yearly_results': yearly_results
     })
+
+@login_required
+def delete_monthly_result(request, result_id):
+    result = CalculationResult.objects.get(pk=result_id, user=request.user)  # Ensure user owns the result
+    result.delete()
+    return redirect('result_history')  # Assumes 'history' is the name of your history view
+
+@login_required
+def delete_yearly_result(request, result_id):
+    result = CalculationResultYear.objects.get(pk=result_id, user=request.user)  # Ensure user owns the result
+    result.delete()
+    return redirect('result_history')

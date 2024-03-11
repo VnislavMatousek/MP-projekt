@@ -35,6 +35,10 @@
                     <p>Daň před slevami: {{ result.dan_pred_slevami|intcomma }} Kč</p>
                     <p>Daň po slevách: {{ result.dan_po_slevach|intcomma }} Kč</p>
                     <p>Čistá mzda: {{ result.cista_mzda|intcomma }} Kč</p>
+                    <form method="post" action="{% url 'delete_monthly_result' result.id %}">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    </form>
                 </div>
                 {% empty %}
                 <p>No monthly calculation history available.</p>
@@ -54,6 +58,10 @@
                     <p>Daň před slevami: {{ result.dan_pred_slevami|intcomma }} Kč</p>
                     <p>Daň po slevách: {{ result.dan_po_slevach|intcomma }} Kč</p>
                     <p>Čistá mzda: {{ result.cista_mzda|intcomma }} Kč</p>
+                    <form method="post" action="{% url 'delete_yearly_result' result.id %}">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    </form>
                 </div>
                 {% empty %}
                 <p>No yearly calculation history available.</p>
