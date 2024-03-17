@@ -1,4 +1,3 @@
-
 .login-container {
     display: flex;
     flex-direction: column;
@@ -6,37 +5,40 @@
     justify-content: center;
     text-align: center;
     min-height: 100vh;
-    padding: 40px 20px;
+    padding: 20px 10px; /* Reduced padding */
     box-sizing: border-box;
 }
 
 .login-form {
     width: 100%;
-    max-width: 450px;
-    padding: 40px;
+    max-width: 400px; /* Reduced width for a smaller form */
+    padding: 20px; /* Reduced padding */
     background-color: #F7F7F7;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    margin-top: -140px; /* Moves the form 20px higher than center */
+    margin-top: -120px; /* Adjusted to lift the form slightly */
 }
 
 .login-form h2 {
-    margin-bottom: 30px; /* Increases space below the heading */
-    color: #333; /* Darker text for better readability */
-    font-size: 24px; /* Larger font size for the heading */
+    margin-bottom: 20px; /* Reduced space below the heading */
+    color: #333;
+    font-size: 22px; /* Slightly smaller font size for the heading */
 }
 
 .form-field, .form-actions {
-    margin-bottom: 20px; /* Increases spacing between form elements */
+    margin-bottom: 15px; /* Reduced spacing between form elements */
 }
 
-.form-field input[type="text"], .form-field input[type="password"], .submit-btn {
-    width: calc(100% - 20px); /* Adjusts width accounting for padding */
-    padding: 15px; /* Larger padding for bigger input fields */
-    margin-top: 5px; /* Keeps a small top margin */
-    border: 2px solid #ccc; /* Makes the border slightly thicker */
-    border-radius: 5px; /* Rounded corners for input fields */
-    font-size: 16px; /* Larger font size for readability */
+.form-field input[type="text"],
+.form-field input[type="password"],
+.form-field input[type="email"],
+.submit-btn {
+    width: calc(100% - 16px); /* Adjusted width */
+    padding: 10px; /* Reduced padding for input fields */
+    margin-top: 5px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px; /* Reduced font size for better readability */
 }
 
 .submit-btn {
@@ -44,57 +46,75 @@
     color: white;
     border: none;
     cursor: pointer;
-    font-weight: bold; /* Makes the button text bold */
-    border-radius: 5px; /* Ensures the button has rounded corners */
-    transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+    font-weight: bold;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
 }
 
 .submit-btn:hover {
-    background-color: #005f9e; /* Slightly darker shade on hover for feedback */
+    background-color: #005f9e;
 }
 
 .form-footer {
-    margin-top: 30px; /* More space above the footer links */
-    font-size: 14px; /* Adjusts font size for readability */
+    margin-top: 20px; /* Reduced space above the footer links */
+    font-size: 13px; /* Reduced font size */
 }
 
 .forgot-password, .create-account {
     color: #006FB8;
     text-decoration: none;
-    margin-top: 10px; /* Ensures spacing between the links */
+    margin-top: 10px;
 }
 
 .create-account {
-    font-weight: bold; /* Highlights the 'Create an Account' link */
-    display: block; /* Ensures it is on its own line */
-    margin-top: 20px; /* Extra spacing above 'Create an Account' */
+    font-weight: bold;
+    display: block;
+    margin-top: 15px; /* Reduced extra spacing */
+}
+
+.error {
+    color: #721c24; /* Change the text color for better visibility */
+    background-color: #f8d7da; /* Light red background */
+    border-color: #f5c6cb; /* Light red border */
+    border-radius: 4px; /* Rounded corners for a modern look */
+    padding: 10px; /* Add some padding inside the error box */
+    margin-bottom: 20px; /* Add some space below the error box */
+    border: 1px solid transparent; /* Add a border */
+    font-size: 0.875em; /* Adjust font size */
+    font-weight: bold; /* Bold font for emphasis */
+}
+
+/* Ensure errors are not overridden by other styles */
+.error, .error * {
+    box-sizing: border-box; /* This ensures padding doesn't increase the size of the box */
 }
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
     .login-form {
-        margin-top: -20px; /* Less negative margin for smaller screens */
-        padding: 20px; /* Smaller padding for smaller screens */
-        max-width: 90%; /* Allows the form to be more fluid on small devices */
+        margin-top: -10px;
+        padding: 15px; /* Further reduced padding for smaller screens */
+        max-width: 90%;
     }
 
     .form-field input[type="text"],
     .form-field input[type="password"],
+    .form-field input[type="email"],
     .submit-btn {
-        padding: 10px; /* Adjust padding for smaller screens */
+        padding: 8px; /* Further reduced padding */
     }
 
     .login-container {
-        padding: 20px 10px; /* Smaller padding for the container on smaller screens */
+        padding: 15px 5px; /* Reduced padding for the container */
     }
 }
 
 @media (max-width: 480px) {
     .login-form h2 {
-        font-size: 20px; /* Smaller font size for very small screens */
+        font-size: 18px; /* Further reduced font size for very small screens */
     }
 
     .form-footer {
-        font-size: 12px; /* Smaller font size for the footer on very small screens */
+        font-size: 11px; /* Further reduced font size for the footer */
     }
 }

@@ -11,6 +11,7 @@ class CalculationResult(models.Model):
     dan_po_slevach = models.FloatField()
     cista_mzda = models.FloatField()
     created_at = models.DateTimeField(auto_now_add=True)
+    pouzite_slevy = models.TextField(default="", blank=True)
 
     def __str__(self):
         return f"Result for {self.user.username} on {self.created_at.strftime('%Y-%m-%d')}"
@@ -26,6 +27,7 @@ class CalculationResultYear(models.Model):
     dan_po_slevach = models.FloatField()
     cista_mzda = models.FloatField()
     created_at = models.DateTimeField(auto_now_add=True)
+    pouzite_slevy = models.TextField(default="", blank=True)
 
     def __str__(self):
         return f"Result for {self.user.username} on {self.created_at.strftime('%Y-%m-%d')}"

@@ -10,24 +10,26 @@
             <h2>Roční daňová kalkulačka</h2>
             <form method="post" class="tax-form">
                 {% csrf_token %}
-                <div class="form-group">
+                <div class="form-group" style="font-weight: bold">
                     {{ form.zakladni_mzda1.label_tag }}
                     {{ form.zakladni_mzda1 }}
                 </div>
                 <!-- Přidání checkboxů pro slevy -->
                 <div class="form-group">
-                    {{ form.slevy1.label_tag }}
+                    <div style="font-weight: bold;">
+                        {{ form.slevy1.label_tag }}
+                    </div>
                     {{ form.slevy1 }}
                 </div>
-                <div class="form-group">
+                <div class="form-group" style="font-weight: bold">
                     {{ form.deti1.label_tag }}
                     {{ form.deti1 }}
                 </div>
-                <div class="form-group">
+                <div class="form-group" style="font-weight: bold">
                     {{ form.invalidita1.label_tag }}
                     {{ form.invalidita1 }}
                 </div>
-                <div class="form-group">
+                <div class="form-group" style="font-weight: bold">
                     {{ form.ztp1.label_tag }}
                     {{ form.ztp1 }}
                 </div>
@@ -63,15 +65,15 @@
                 </div>
                 <div class="result-item">
                     <span class="label">Daň před slevami</span>
-                    <span class="value">{{ result.dan|intcomma }} Kč</span>
+                    <span class="value">{{ result.dan|floatformat:"0"|intcomma }} Kč</span>
                 </div>
                 <div class="result-item">
                     <span class="label">Daň po slevách</span>
-                    <span class="value">{{ result.dan2|intcomma }} Kč</span>
+                    <span class="value">{{ result.dan2|floatformat:"0"|intcomma }} Kč</span>
                 </div>
                 <div class="result-item">
                     <span class="label">Celkový čistý příjem</span>
-                    <span class="value">{{ result.cista_mzda|intcomma }} Kč</span>
+                    <span class="value" style="color: #006FB8; font-weight: bold">{{ result.cista_mzda|floatformat:"0"|intcomma }} Kč</span>
                 </div>
             </div>
         {% endif %}

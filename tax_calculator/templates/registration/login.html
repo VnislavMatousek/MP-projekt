@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+
 {% load static %}
 
 {% block extra_css %}
@@ -6,24 +7,48 @@
 {% endblock %}
 
 {% block content %}
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert {{ message.tags }}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
+
     <div class="login-container">
+
         <form method="post" action="." class="login-form">
             {% csrf_token %}
             <h2>Příhlásit se</h2>
+            {% if form.non_field_errors %}
+                {% for error in form.non_field_errors %}
+                    <div class="error">{{ error }}</div>
+                {% endfor %}
+            {% endif %}
             <div class="form-field">
                 {{ form.username.label_tag }}
                 {{ form.username }}
+                {% if form.username.errors %}
+                    {% for error in form.username.errors %}
+                        <div class="error">{{ error }}</div>
+                    {% endfor %}
+                {% endif %}
             </div>
             <div class="form-field">
                 {{ form.password.label_tag }}
                 {{ form.password }}
+                {% if form.password.errors %}
+                    {% for error in form.password.errors %}
+                        <div class="error">{{ error }}</div>
+                    {% endfor %}
+                {% endif %}
             </div>
             <div class="form-actions">
                 <input type="submit" value="Příhlásit" class="submit-btn">
             </div>
             <div class="form-footer">
-                <a class="forgot-password" href="{% url "password_change" %}">Forgot Password?</a>
-                Not a Member? <a class="create-account" href="{% url "registration" %}">Create an Account</a>
+                <a class="forgot-password" href="{% url 'password_reset' %}">Zapomenuté heslo?</a>
+                Ještě nejste členem? <a class="create-account" href="{% url 'registration' %}">Vytvořit účet</a>
             </div>
         </form>
     </div>

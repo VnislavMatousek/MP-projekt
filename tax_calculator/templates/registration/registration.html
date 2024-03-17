@@ -3,35 +3,60 @@
 {% load static %}
 
 {% block extra_css %}
-    <link rel="stylesheet" href="{% static 'css/login.css' %}"> <!-- Assuming the same CSS file is applicable -->
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
 {% endblock %}
 
 {% block content %}
-    <div class="login-container"> <!-- Use the same container for consistent styling -->
-        <form method="post" action="." class="login-form"> <!-- Use the same form class -->
+    <div class="login-container">
+        <form method="post" action="." class="login-form">
             {% csrf_token %}
-            <h2>Registrace</h2> <!-- Keep headings consistent -->
+            <h2>Registrace</h2>
+            {% if form.non_field_errors %}
+                {% for error in form.non_field_errors %}
+                    <div class="error">{{ error }}</div>
+                {% endfor %}
+            {% endif %}
             <div class="form-field">
                 {{ form.username.label_tag }}
                 {{ form.username }}
+                {% if form.username.errors %}
+                    {% for error in form.username.errors %}
+                        <div class="error">{{ error }}</div>
+                    {% endfor %}
+                {% endif %}
             </div>
             <div class="form-field">
-                {{ form.email.label_tag }} <!-- Assuming you have an email field -->
+                {{ form.email.label_tag }}
                 {{ form.email }}
+                {% if form.email.errors %}
+                    {% for error in form.email.errors %}
+                        <div class="error">{{ error }}</div>
+                    {% endfor %}
+                {% endif %}
             </div>
             <div class="form-field">
-                {{ form.password1.label_tag }} <!-- Adjust for your form's field names -->
+                {{ form.password1.label_tag }}
                 {{ form.password1 }}
+                {% if form.password1.errors %}
+                    {% for error in form.password1.errors %}
+                        <div class="error">{{ error }}</div>
+                    {% endfor %}
+                {% endif %}
             </div>
             <div class="form-field">
-                {{ form.password2.label_tag }} <!-- Adjust for confirmation field -->
+                {{ form.password2.label_tag }}
                 {{ form.password2 }}
+                {% if form.password2.errors %}
+                    {% for error in form.password2.errors %}
+                        <div class="error">{{ error }}</div>
+                    {% endfor %}
+                {% endif %}
             </div>
             <div class="form-actions">
                 <input type="submit" value="Registrovat" class="submit-btn">
             </div>
             <div class="form-footer">
-                Already a Member? <a class="create-account" href="{% url "login" %}">Login Here</a> <!-- Adjust the link and text accordingly -->
+                Jste již členem? <a class="create-account" href="{% url 'login' %}">Přihlásit se</a>
             </div>
         </form>
     </div>

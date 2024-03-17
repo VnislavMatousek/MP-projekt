@@ -6,20 +6,19 @@
         <h1>Daňová kalkulačka pro fyzické osoby na rok 2024</h1>
         <p> Naše daňová kalkulačka je speciálně navržena pro účetní a pomáhá rychle a efektivně
             vypočítat daň z příjmů fyzických osob. S intuitivním rozhraním a aktualizovanými daňovými sazbami si můžete být jisti,
-            že vaše daňové výpočty budou přesné a v souladu s nejnovějšími daty.
-            Začněte ještě dnes a učiňte svůj daňový proces hladším a efektivnějším.</p>
-            <a class ="začít" href={% url "index" %}>Začít<i class="las la-arrow-right"></i></a>
+            že vaše daňové výpočty budou přesné a v souladu s nejnovějšími daty.</p>
+            <a class ="začít" href={% url "calculate_tax" %}>měsíční<i class="las la-arrow-right"></i></a>
+            <a class="začít" href="{% url "calculate_tax2" %}">roční<i class="las la-arrow-right"></i></a>
         </div>
         <div class="index_img">
             <img src="{% static 'images/weblep(2).png' %}">
         </div>
         <div class="funkce">
             <div class="funkce-o">
-                <h3>Funkce</h3>
-                <p> Měsíční a roční verze,
-                    Aktualizace a novinky,
-                    Nejnovější data,
-                    Historie výpočtů</p>
+                <h3>Výhody</h3>
+                <p>Naše online kalkulačka zajišťuje přesné a aktuální výpočty daní,
+                    nabízí snadné použití a rychlé výsledky. S naší platformou ušetříte
+                    čas a zajistíte si bezpečnost vašich dat oproti tradičním metodám.</p>
             </div>
             <div class="proc">
                 <h3>Proč tato aplikace?</h3>
@@ -32,49 +31,50 @@
     </div>
     <section class="onas">
         <div class="onas1">
-            <h2>O nás</h2>
-            <p>sdnajjdnsaj ndsandn asjkdnkasndk lnldknsak ndksandk nasknd kalnkld asnk</p>
+            <h2>Funkce</h2>
+            <p>
+                Naše kalkulačka nabízí rychlé, přesné a bezpečné výpočty daní s intuitivním uživatelským rozhraním.</p>
         </div>
         <div class="box">
             <!--box-1-------->
             <div class="boxik">
                 <img src="{% static 'images/login.svg' %}">
-                <font>Log-In to our secure website</font>
-                <p>To begin the process, please Log-In to our secure system. Everything you need to Log-In is available in the communication letter you have received from us.</p>
+                <font>Přihlášení do Aplikace</font>
+                <p>Přihlaste se do naší bezpečné aplikace a získejte okamžitý přístup ke všem svým daňovým výpočtům.</p>
                 <!--btn--------->
-                <a href={% url "index" %}>Login</a>
+                <a href={% url "login" %}>Přihlásit se</a>
             </div>
             <!--box-2-------->
             <div class="boxik">
                 <img src="{% static 'images/account view.svg' %}">
-                <font>View Your Website</font>
-                <p>You will have a chance to review your account for accuracy and update your contact information. Should you find any incorrect information on your account or if you prefer to talk to us directly, please Contact Us.</p>
+                <font>Prohlédněte si Výsledky</font>
+                <p>Zaregistrujte se a rohlédněte si detaily vašich výpočtů a přesvědčte se o jejich správnosti. Můžete nás také snadno přímo kontaktovat pro další podporu.</p>
                 <!--btn--------->
-                <a href={% url "index" %}>View</a>
+                <a href={% url "result_history" %}>Historie</a>
             </div>
             <!--box-3-------->
             <div class="boxik">
                 <img src="{% static 'images/payment method.svg' %}">
-                <font>Select Your Plan</font>
-                <p>In addition to the payment in full, we may offer you a discount for making online payments, allow you to schedule payments over time, or have you define the payment terms that best work for your particular situation.</p>
+                <font>Kalkulačka</font>
+                <p>Využijte naši měsíční kalkulačku pro okamžitý odhad vaší daňové povinnosti za aktuální měsíc. Ideální pro rychlé a jednoduché spravování firemních financí.</p>
                 <!--btn--------->
-                <a href={% url "index" %}>Select plan</a>
+                <a href={% url "calculate_tax" %}>Kalkulačka</a>
             </div>
             <!--box-4-------->
             <div class="boxik">
                 <img src="{% static 'images/lock.svg' %}">
-                <font>Login in secure website</font>
-                <p>You can make secure online payments from the privacy of your home 24/7.</p>
+                <font>Roční Souhrn</font>
+                <p>S naší roční kalkulačkou získáte kompletní přehled o vašich daňových závazcích za celý rok. Tato funkce vám pomůže připravit si daně s předstihem.</p>
                 <!--btn--------->
-                <a href={% url "index" %}>Login</a>
+                <a href={% url "calculate_tax2" %}>Kalkulačka</a>
             </div>
-            <!--box-1-------->
+            <!--box-5-------->
             <div class="boxik">
                 <img src="{% static 'images/document.svg' %}">
-                <font>Confrim Your Websites</font>
-                <p>When you make payment(s), we will issue you an electronic receipt. You can also log in any time to get the most up-to-date receipt</p>
+                <font>Historie Výpočtů</font>
+                <p>Po registraci uchovávejte historii všech vašich daňových výpočtů na jednom místě. Snadno se tak vrátíte k předchozím výpočtům pro srovnání nebo revizi.</p>
                 <!--btn--------->
-               <a href={% url "index" %}>View</a>
+                <a href={% url "result_history" %}>Historie</a>
             </div>
         </div>
     </section>

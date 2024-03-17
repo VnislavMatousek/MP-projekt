@@ -13,58 +13,81 @@
         <div class="form-container" style="text-align: right;">
             <form method="get" class="form-inline">
                 {{ form.as_p }}
-                <button type="submit" class="btn btn-primary">Filter</button>
+                <button type="submit" class="btn btn-primary">Filtrovat</button>
             </form>
         </div>
 
         <!-- Button to jump to yearly calculations -->
         <div class="navigation">
-            <a href="#yearly-results" class="scroll-link">Go to Yearly Results</a>
+            <a href="#yearly-results" class="scroll-link">Přejít na roční historii</a>
         </div>
 
-        <h2>Monthly Calculation History</h2>
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert {{ message.tags }}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+
+        <h2>Historie měsíční kalkulačky</h2>
         <div class="history-section">
             {% for result in monthly_results %}
                 <div class="result-item">
-                    <!-- Display fields from MonthlyCalculation -->
-                    <p>Date: {{ result.created_at|date:"d M Y" }}</p>
-                    <p>Hrubá mzda: {{ result.hruba_mzda|intcomma }} Kč</p>
-                    <p>Superhrubá mzda: {{ result.superhruba_mzda|intcomma }} Kč</p>
-                    <p>Zdravotní pojištění: {{ result.zdravotni_pojisteni|intcomma }} Kč</p>
-                    <p>Sociální pojištění: {{ result.socialni_pojisteni|intcomma }} Kč</p>
-                    <p>Daň před slevami: {{ result.dan_pred_slevami|intcomma }} Kč</p>
-                    <p>Daň po slevách: {{ result.dan_po_slevach|intcomma }} Kč</p>
-                    <p>Čistá mzda: {{ result.cista_mzda|intcomma }} Kč</p>
                     <form method="post" action="{% url 'delete_monthly_result' result.id %}">
                         {% csrf_token %}
-                        <button type="submit" class="btn btn-danger">Delete</button>
+                        <button type="submit" class="btn btn-danger" aria-label="Delete">
+                            <i class="fas fa-times fa-2x"></i>
+                        </button>
                     </form>
+                    <!-- Display fields from MonthlyCalculation -->
+                    <p>Datum vytvoření: <strong>{{ result.created_at|date:"d F Y" }}</strong></p>
+                    <p>Hrubá mzda: <strong>{{ result.hruba_mzda|floatformat:"0"|intcomma }} Kč</strong></p>
+                    <p>Superhrubá mzda: <strong>{{ result.superhruba_mzda|floatformat:"0"|intcomma }} Kč</strong></p>
+                    <p>Zdravotní pojištění: <strong>{{ result.zdravotni_pojisteni|floatformat:"0"|intcomma }} Kč</strong></p>
+                    <p>Sociální pojištění: <strong>{{ result.socialni_pojisteni|floatformat:"0"|intcomma }} Kč</strong></p>
+                    <p>Daň před slevami: <strong>{{ result.dan_pred_slevami|floatformat:"0"|intcomma }} Kč</strong></p>
+                    <p>Daň po slevách: <strong>{{ result.dan_po_slevach|floatformat:"0"|intcomma }} Kč</strong></p>
+                    <p>Čistá mzda: <strong>{{ result.cista_mzda|floatformat:"0"|intcomma }} Kč</strong></p>
+                    <p>Použité slevy: {{ result.pouzite_slevy }}</p>
                 </div>
                 {% empty %}
-                <p>No monthly calculation history available.</p>
+                <p class="nic">Zatím žádné výpočty.</p>
             {% endfor %}
         </div>
 
-        <h2 id="yearly-results">Yearly Calculation History</h2>
+        <h2 id="yearly-results">Historie roční kalkulačky</h2>
+
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert {{ message.tags }}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+
         <div class="history-section">
             {% for result in yearly_results %}
                 <div class="result-item">
-                    <!-- Display fields from YearlyCalculation -->
-                    <p>Date: {{ result.created_at|date:"d M Y" }}</p>
-                    <p>Hrubá mzda: {{ result.hruba_mzda|intcomma }} Kč</p>
-                    <p>Superhrubá mzda: {{ result.superhruba_mzda|intcomma }} Kč</p>
-                    <p>Zdravotní pojištění: {{ result.zdravotni_pojisteni|intcomma }} Kč</p>
-                    <p>Sociální pojištění: {{ result.socialni_pojisteni|intcomma }} Kč</p>
-                    <p>Daň před slevami: {{ result.dan_pred_slevami|intcomma }} Kč</p>
-                    <p>Daň po slevách: {{ result.dan_po_slevach|intcomma }} Kč</p>
-                    <p>Čistá mzda: {{ result.cista_mzda|intcomma }} Kč</p>
                     <form method="post" action="{% url 'delete_yearly_result' result.id %}">
                         {% csrf_token %}
-                        <button type="submit" class="btn btn-danger">Delete</button>
+                        <button type="submit" class="btn btn-danger" aria-label="Delete">
+                            <i class="fas fa-times fa-2x"></i>
+                        </button>
                     </form>
+                    <!-- Display fields from YearlyCalculation -->
+                    <p>Datum vytvoření: <strong>{{ result.created_at|date:"d. F Y" }}</strong></p>
+                    <p>Hrubá mzda: <strong>{{ result.hruba_mzda|floatformat:"0"|intcomma }}</strong> Kč</p>
+                    <p>Superhrubá mzda: <strong>{{ result.superhruba_mzda|floatformat:"0"|intcomma }}</strong> Kč</p>
+                    <p>Zdravotní pojištění: <strong>{{ result.zdravotni_pojisteni|floatformat:"0"|intcomma }}</strong> Kč</p>
+                    <p>Sociální pojištění: <strong>{{ result.socialni_pojisteni|floatformat:"0"|intcomma }}</strong> Kč</p>
+                    <p>Daň před slevami: <strong>{{ result.dan_pred_slevami|floatformat:"0"|intcomma }}</strong> Kč</p>
+                    <p>Daň po slevách: <strong>{{ result.dan_po_slevach|floatformat:"0"|intcomma }}</strong> Kč</p>
+                    <p>Čistá mzda: <strong>{{ result.cista_mzda|floatformat:"0"|intcomma }}</strong> Kč</p>
+                    <p>Použité slevy: {{ result.pouzite_slevy }}</p>
                 </div>
                 {% empty %}
-                <p>No yearly calculation history available.</p>
+                <p class="nic">Zatím žádné výpočty.</p>
             {% endfor %}
         </div>
     </div>

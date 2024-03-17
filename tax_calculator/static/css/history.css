@@ -17,6 +17,7 @@ h2 {
     padding: 20px;
     margin-bottom: 20px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: relative;
 }
 
 .result-item p {
@@ -56,6 +57,43 @@ h2 {
     outline: none; /* Removes the black outline */
     box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.5); /* Add a blue glow for accessibility */
 }
+
+.btn-danger {
+    background-color: transparent; /* Makes the background transparent */
+    border: none; /* Removes the border */
+    color: #dc3545; /* Sets the color of the 'X' icon, adjust as needed */
+    cursor: pointer;
+    position: absolute; /* Absolute position */
+    top: 10px; /* Adjust as needed */
+    right: 10px; /* Adjust as needed */
+}
+
+.btn-danger:hover, .btn-danger:focus {
+    background-color: #f8d7da; /* Light red background on hover/focus for visibility */
+    color: #721c24; /* Darker red for the icon on hover/focus */
+}
+
+.nic {
+    display: block;
+    text-align: center;
+    color: #4a4a4a; /* Dark gray color for the text */
+    background-color: #ffffff; /* White background for contrast */
+    border: 1px solid #d3d3d3; /* Light gray border */
+    border-radius: 8px; /* Rounded corners for a modern look */
+    padding: 20px;
+    font-size: 20px; /* Large, readable text */
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; /* Modern font */
+    margin: 20px auto; /* Centering */
+    max-width: 600px; /* Maximum width */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    transition: all 0.3s; /* Smooth transition for hover effect */
+}
+
+.nic:hover {
+    transform: translateY(-5px); /* Slight raise */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Enhanced shadow */
+}
+
 
 /* Make the form responsive */
 @media (max-width: 768px) {

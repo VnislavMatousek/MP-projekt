@@ -10,28 +10,30 @@
             <h2>Měsíční daňová kalkulačka</h2>
             <form method="post" class="tax-form">
                 {% csrf_token %}
-                <div class="form-group">
+                <div class="form-group" style="font-weight: bold">
                     {{ form.zakladni_mzda.label_tag }}
                     {{ form.zakladni_mzda }}
                 </div>
-                <div class="form-group">
+                <div class="form-group" style="font-weight: bold;">
                     {{ form.prirazky.label_tag }}
                     {{ form.prirazky }}
                 </div>
                 <!-- Přidání checkboxů pro slevy -->
                 <div class="form-group">
-                    {{ form.slevy.label_tag }}
+                    <div style="font-weight: bold;">
+                        {{ form.slevy.label_tag }}
+                    </div>
                     {{ form.slevy }}
                 </div>
-                <div class="form-group">
+                <div class="form-group" style="font-weight: bold">
                     {{ form.deti.label_tag }}
                     {{ form.deti }}
                 </div>
-                <div class="form-group">
+                <div class="form-group" style="font-weight: bold">
                     {{ form.invalidita.label_tag }}
                     {{ form.invalidita }}
                 </div>
-                <div class="form-group">
+                <div class="form-group" style="font-weight: bold">
                     {{ form.ztp.label_tag }}
                     {{ form.ztp }}
                 </div>
@@ -46,36 +48,36 @@
                     <span class="value">{{ result.hruba_mzda|intcomma  }} Kč</span>
                 </div>
                 <div class="result-item">
-                    <span class="label">Sociální pojištění hrazené zaměstnancem</span>
+                    <span class="label">Sociální pojištění hrazené zaměstnancem:</span>
                     <span class="value">{{ result.socialni_pojisteni|intcomma  }} Kč</span>
                 </div>
                 <div class="result-item">
-                    <span class="label">Zdravotní pojištění hrazené zaměstnancem</span>
+                    <span class="label">Zdravotní pojištění hrazené zaměstnancem:</span>
                     <span class="value">{{ result.zdravotni_pojisteni|intcomma  }} Kč</span>
                 </div>
                 <div class="result-item">
-                    <span class="label">Sociální pojištění hrazené zaměstnavatelem</span>
+                    <span class="label">Sociální pojištění hrazené zaměstnavatelem:</span>
                     <span class="value">{{ result.socialni_pojisteni_zamestnavatelem|intcomma  }} Kč</span>
                 </div>
                 <div class="result-item">
-                    <span class="label">Zdravotní pojištění hrazené zaměstnavatelem</span>
+                    <span class="label">Zdravotní pojištění hrazené zaměstnavatelem:</span>
                     <span class="value">{{ result.zdravotni_pojisteni_zamestnavatelem|intcomma  }} Kč</span>
                 </div>
                 <div class="result-item">
-                    <span class="label">Superhrubá mzda</span>
+                    <span class="label">Superhrubá mzda (momentálně neplatné):</span>
                     <span class="value">{{ result.superhruba_mzda|intcomma  }} Kč</span>
                 </div>
                 <div class="result-item">
-                    <span class="label">Daň před slevami</span>
-                    <span class="value">{{ result.dan|intcomma  }} Kč</span>
+                    <span class="label">Daň před slevami:</span>
+                    <span class="value">{{ result.dan|floatformat:"0"|intcomma }} Kč</span>
                 </div>
                 <div class="result-item">
-                    <span class="label">Daň po slevách</span>
-                    <span class="value">{{ result.dan2|intcomma  }} Kč</span>
+                    <span class="label">Daň po slevách:</span>
+                    <span class="value">{{ result.dan2|floatformat:"0"|intcomma }} Kč</span>
                 </div>
                 <div class="result-item">
-                    <span class="label">Čistá mzda</span>
-                    <span class="value">{{ result.cista_mzda|intcomma  }} Kč</span>
+                    <span class="label">Čistá mzda:</span>
+                    <span class="value" style="color: #006FB8; font-weight: bold">{{ result.cista_mzda|floatformat:"0"|intcomma }} Kč</span>
                 </div>
             </div>
         {% endif %}

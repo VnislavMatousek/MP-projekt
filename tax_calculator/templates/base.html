@@ -35,54 +35,12 @@
                 <li><a href="{% url "logout" %}">Odhlásit</a></li>
             {% else %}
                 <li><a href="{% url "registration" %}">Registrace</a></li>
-                <li><a href="{% url "login" %}">Příhlásit</a></li>
+                <li><a href="{% url "login" %}">Přihlásit</a></li>
             {% endif %}
         </ul>
     </nav>
     {% block content %}
     {% endblock %}
-    <footer class="footer">
-        <div class="konec">
-            <div class="rada">
-                <div class="footer-sloup">
-                    <h4>company</h4>
-                    <ul>
-                        <li><a href="#">about us</a></li>
-                        <li><a href="#">our services</a></li>
-                        <li><a href="#">privacy policy</a></li>
-                        <li><a href="#">affiliate program</a></li>
-                    </ul>
-                </div>
-                <div class="footer-sloup">
-                    <h4>get help</h4>
-                    <ul>
-                        <li><a href="#">FAQ</a></li>
-                        <li><a href="#">shipping</a></li>
-                        <li><a href="#">returns</a></li>
-                        <li><a href="#">order status</a></li>
-                        <li><a href="#">payment options</a></li>
-                    </ul>
-                </div>
-                <div class="footer-sloup">
-                    <h4>online shop</h4>
-                    <ul>
-                        <li><a href="#">watch</a></li>
-                        <li><a href="#">bag</a></li>
-                        <li><a href="#">shoes</a></li>
-                        <li><a href="#">dress</a></li>
-                    </ul>
-                </div>
-                <div class="footer-sloup">
-                    <h4>follow us</h4>
-                    <div class="social-links">
-                        <a href="https://www.facebook.com/?locale=cs_CZ"><i class="fab fa-facebook-f"></i></a>
-                        <a href="https://twitter.com/?lang=cs"><i class="fab fa-twitter"></i></a>
-                        <a href="https://www.instagram.com/"><i class="fab fa-instagram"></i></a>
-                        <a href="https://cz.linkedin.com/"><i class="fab fa-linkedin-in"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
         <script>
             document.addEventListener('DOMContentLoaded', (event) => {
                 // Check if results are already present on page load and scroll to them
@@ -112,6 +70,62 @@
                 }
             });
         </script>
-    </footer>
+    <script>
+        // When the document is ready
+        document.addEventListener('DOMContentLoaded', function() {
+            // Find all elements with class 'alert' and loop through them
+            document.querySelectorAll('.alert').forEach(function(element) {
+                // Set timeout to fade out the alert after 5 seconds (5000 milliseconds)
+                setTimeout(function() {
+                    // Fade out the alert slowly
+                    element.style.opacity = '0';
+                    // Set another timeout to completely hide the alert after it has faded out
+                    setTimeout(function() {
+                        element.style.display = 'none';
+                    }, 600); // Wait an additional 0.6 seconds for the fade out to finish
+                }, 5000); // Change 5000 to the number of milliseconds you want the alert to be visible for
+            });
+        });
+    </script>
     </body>
+    <footer class="footer">
+        <div class="konec">
+            <div class="rada">
+                <div class="footer-sloup">
+                    <ul>
+                        <img src="{% static 'images/minilogo.png' %}" alt="">
+                    </ul>
+                </div>
+                <div class="footer-sloup">
+                    <h4>Kontakt</h4>
+                    <ul>
+                        <li style="color: #bbbbbb;"><i class="fas fa-map-marker-alt" style="color: white;"></i> Daně na dlani s.r.o.</li>
+                        <li style="color: #bbbbbb;"><i class="fas fa-building" style="color: white;"></i> Brno, Hudcova 98, 621 00</li>
+                        <li style="color: #bbbbbb;"><i class="fas fa-clock" style="color: white;"></i> Po-Pá od 9:00 do 17:00</li>
+                        <li style="color: #bbbbbb;"><i class="fas fa-envelope" style="color: white;"></i> info@danenadlani.cz</li>
+                        <li style="color: #bbbbbb;"><i class="fas fa-phone" style="color: white;"></i> +420 777 222 726</li>
+                    </ul>
+                </div>
+                <div class="footer-sloup">
+                    <h4>Aplikace</h4>
+                    <ul>
+                        <li><a href="{% url "calculate_tax" %}">Měsíční kalkulačka</a></li>
+                        <li><a href="{% url "calculate_tax2" %}">Roční kalkulačka</a></li>
+                    </ul>
+                </div>
+                <div class="footer-sloup">
+                    <h4>follow us</h4>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/?locale=cs_CZ"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://twitter.com/?lang=cs"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.instagram.com/"><i class="fab fa-instagram"></i></a>
+                        <a href="https://cz.linkedin.com/"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="copy-right">
+                    © 2024 Daně na dlani s.r.o. All rights reserved.
+                </div>
+            </div>
+        </div>
+    </footer>
 </html>

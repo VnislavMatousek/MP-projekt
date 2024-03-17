@@ -10,9 +10,9 @@ body {
 /* Styling for main content */
 .maint {
     background-color: white;
-    padding: 0 20px; /* Only apply padding to the left and right sides */
-    margin-top: 20px; /* Add margin to the top if needed */
-    margin-bottom: 20px; /* Add margin to the bottom if needed */
+    padding: 0 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
     margin-right: 20px;
     margin-left: 20px;
     border-radius: 8px;
@@ -20,48 +20,17 @@ body {
 }
 
 /* Styles for headings */
-.nazev {
+.nazev, .mensi {
     color: #006FB8;
-    margin-bottom: 20px;
+    margin-top: 60px;
 }
 
-.mensi {
-    color: #006FB8;
-}
 .jestemensi {
     text-align: center;
-    color: black; /* Adjust the color as needed */
-    font-size: 24px; /* Adjust the size as needed */
+    color: black;
+    font-size: 24px;
     font-weight: bold;
-    margin-bottom: 20px; /* Adds some space below the heading */
-}
-
-/* Style for the unordered list */
-.textik {
-    list-style-type: none; /* Removes default bullets */
-    padding: 0;
-    margin: 0 auto;
-    text-align: center; /* Center align the list's content */
-    font-size: 20px;
-}
-
-/* Style for each list item */
-.textik li {
-    text-align: left; /* Aligns the text to the left */
-    position: relative;
-    display: inline-block; /* Allows for centering of list items */
-    width: 90%; /* Adjusts the width of the list items */
-    margin-bottom: 10px; /* Space between list items */
-}
-
-/* Custom bullet points */
-.textik li::before {
-    content: '•'; /* Custom bullet point */
-    color: #006FB8; /* Bullet point color */
-    font-size: 28px; /* Adjust the size as needed */
-    position: absolute;
-    left: -25px; /* Adjust based on your layout and font size */
-    top: -5px;
+    margin-top: 55px;
 }
 
 /* Date styling */
@@ -70,38 +39,74 @@ body {
     margin-bottom: 15px;
 }
 
-
+/* Image styling */
 .obrazok {
-    width: 100%;
-    height: auto;
-    max-width: 600px; /* You can adjust this value */
+    width: 85%;
+    height: 35%;
+    max-width: 1000px;
+    max-height: 500px;
     display: block;
     margin: 20px auto;
     border-radius: 8px;
 }
 
+/* Intro paragraph styling */
 .mini {
     text-align: center;
-    display: block; /* Ensures it is treated as a block-level element */
-    margin: 20px auto; /* Adds margin to top and bottom, auto centers it horizontally */
-    max-width: 80%; /* Adjust based on preference */
-    font-style: italic; /* Assuming you want to keep the italicized style */
+    display: block;
+    margin: 20px auto;
+    max-width: 80%;
+    font-style: italic;
 }
 
+/* Divider styling */
 .red-line {
-    height: 2px; /* Adjust the height to change the thickness of the line */
-    background-color: #006FB8; /* This is a shade of blue; adjust as needed */
-    margin: 20px auto; /* Adds some vertical spacing around the line and centers it horizontally */
-    width: 15%; /* Adjust the width as needed */
-    border-radius: 4px; /* Optional: adds rounded corners to the line */
+    height: 2px;
+    background-color: #006FB8;
+    margin: 20px auto;
+    width: 15%;
+    border-radius: 4px;
 }
 
-.tables {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+/* Modern blog card styling for lists */
+.textik {
+    list-style-type: none;
+    padding: 0;
+    margin: 20px auto;
+    text-align: left;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 80%;
+    padding: 20px;
 }
 
+.textik li {
+    text-align: left;
+    position: relative;
+    margin-top: 15px;
+    padding-left: 10px;
+    background-color: #f4f4f4;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.textik li:nth-child(odd) {
+    background-color: #e9f5ff;
+}
+
+.textik li::before {
+    content: '•'; /* Keeps the custom bullet */
+    color: #006FB8; /* Bullet point color */
+    font-size: 30px; /* Increase the size for a larger bullet */
+    position: absolute;
+    left: -14px; /* Move closer to the text background */
+    top: 50%;
+    transform: translateY(-50%);
+    line-height: 0; /* Ensures the bullet aligns properly with the list item */
+}
+
+/* Table styling */
 table {
     margin: auto;
     border-collapse: collapse;
@@ -116,10 +121,14 @@ th {
     background-color: #f2f2f2;
 }
 
-/* Responsive design */
+/* Responsive design adjustments */
 @media (max-width: 768px) {
     .obrazok {
         width: 90%;
         height: auto;
+    }
+
+    .textik {
+        max-width: 90%;
     }
 }

@@ -5,7 +5,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
 
-from .forms import TaxForm, TaxFormRok,HistoryFilterForm
+from .forms import TaxForm, TaxFormRok,HistoryFilterForm, SignupForm
 
 from .models import CalculationResult, CalculationResultYear
 
@@ -24,6 +24,7 @@ def calculate_tax(request):
         if form.is_valid():
             zakladni_mzda = form.cleaned_data['zakladni_mzda']
             prirazky = form.cleaned_data.get('prirazky', 0)
+
 
             # Výpočet hrubé mzdy
             hruba_mzda = zakladni_mzda + prirazky
@@ -90,7 +91,47 @@ def calculate_tax(request):
             # Úprava čisté mzdy v závislosti na výsledku daně
             cista_mzda = hruba_mzda - zdravotni_pojisteni - socialni_pojisteni - dan_po_slevach
 
-            # Save the result if the user is logged in
+            slevy_labels = {
+                'poplatnik': 'Základní sleva na poplatníka',
+                'ztp_p': 'Sleva na držitele průkazu ZTP/P',
+                # doplnit další
+            }
+
+            deti_labels = {
+                'bezdětný': 'Žádná možnost',
+                'prvni_dite': 'Sleva na jedno dítě',
+                'druhe_dite': 'Sleva na dvě děti',
+                'treti_dite': 'Sleva na tři a více děti',
+                # doplnit další
+            }
+
+            invalidita_labels = {
+                'bezinvalidity': 'Žádná možnost',
+                'invalidita1_2': 'Sleva na invaliditu 1. a 2. stupně',
+                'invalidita3': 'Sleva na invaliditu 3. stupně',
+                # doplnit další
+            }
+
+            ztp_labels = {
+                'bez': 'Žádná možnost',
+                'pecujici_manžel': 'Sleva na manželku ZTP/P pečující o dítě do 3 let s příjmem nepřesahujícím 68 000 Kč ročně',
+                'ztp_p_pecujici': 'Sleva na manžela ZTP/P pečující o dítě do 3 let s příjmem nepřesahujícím 68 000 Kč ročně',
+                 # doplnit další
+            }
+
+            pouzite_slevy_list = [
+                f"{slevy_labels[key]}: {slevy_hodnoty[key]} Kč" for key in slevy_list if key in slevy_hodnoty and slevy_hodnoty[key] > 0
+            ] + [
+                f"{deti_labels[key]}: {deti_hodnoty[key]} Kč" for key in deti_list if key in deti_hodnoty and deti_hodnoty[key] > 0
+            ] + [
+                f"{invalidita_labels[key]}: {invalidita_hodnoty[key]} Kč" for key in invalidita_list if key in invalidita_hodnoty and invalidita_hodnoty[key] > 0
+            ] + [
+                f"{ztp_labels[key]}: {ztp_hodnoty[key]} Kč" for key in ztp_list if key in ztp_hodnoty and ztp_hodnoty[key] > 0
+            ]
+
+            pouzite_slevy = ', '.join(pouzite_slevy_list)
+
+        # Save the result if the user is logged in
             if request.user.is_authenticated:
                 CalculationResult.objects.create(
                     user=request.user,
@@ -100,7 +141,8 @@ def calculate_tax(request):
                     socialni_pojisteni=socialni_pojisteni,
                     dan_pred_slevami=pred_slevami_dan,
                     dan_po_slevach=dan_po_slevach,
-                    cista_mzda=cista_mzda
+                    cista_mzda=cista_mzda,
+                    pouzite_slevy=pouzite_slevy
                 )
 
             context['form'] = form
@@ -114,6 +156,7 @@ def calculate_tax(request):
                 'dan': pred_slevami_dan,
                 'dan2': dan_po_slevach,
                 'cista_mzda': cista_mzda,
+                'pouzite_slevy': pouzite_slevy,
             }
 
     else:
@@ -158,21 +201,21 @@ def calculate_tax_rok(request):
 
             deti_hodnoty = {
                 'bezdětný': 0,
-                'prvni_dite': 1267,
-                'druhe_dite': 1860,
-                'treti_dite': 2320,
+                'prvni_dite': 15204,
+                'druhe_dite': 22320,
+                'treti_dite': 27840,
             }
 
             invalidita_hodnoty = {
                 'bezinvalidity': 0,
-                'invalidita1_2': 210,
-                'invalidita3': 420,
+                'invalidita1_2': 2520,
+                'invalidita3': 5040,
             }
 
             ztp_hodnoty = {
                 'bez': 0,
-                'pecujici_manžel': 2070,
-                'ztp_p_pecujici': 4140,
+                'pecujici_manžel': 24840,
+                'ztp_p_pecujici': 49680,
             }
 
             total_deduction = 0
@@ -204,6 +247,46 @@ def calculate_tax_rok(request):
             # Úprava čisté mzdy v závislosti na výsledku daně
             cista_mzda = hruba_mzda - zdravotni_pojisteni - socialni_pojisteni - dan_po_slevach
 
+            slevy_labels = {
+                'poplatnik': 'Základní sleva na poplatníka',
+                'ztp_p': 'Sleva na držitele průkazu ZTP/P',
+                # doplnit další
+            }
+
+            deti_labels = {
+                'bezdětný': 'Žádná možnost',
+                'prvni_dite': 'Sleva na jedno dítě',
+                'druhe_dite': 'Sleva na dvě děti',
+                'treti_dite': 'Sleva na tři a více děti',
+                # doplnit další
+            }
+
+            invalidita_labels = {
+                'bezinvalidity': 'Žádná možnost',
+                'invalidita1_2': 'Sleva na invaliditu 1. a 2. stupně',
+                'invalidita3': 'Sleva na invaliditu 3. stupně',
+                # doplnit další
+            }
+
+            ztp_labels = {
+                'bez': 'Žádná možnost',
+                'pecujici_manžel': 'Sleva na manželku ZTP/P pečující o dítě do 3 let s příjmem nepřesahujícím 68 000 Kč ročně',
+                'ztp_p_pecujici': 'Sleva na manžela ZTP/P pečující o dítě do 3 let s příjmem nepřesahujícím 68 000 Kč ročně',
+                # doplnit další
+            }
+
+            pouzite_slevy_list = [
+                f"{slevy_labels[key]}: {slevy_hodnoty[key]} Kč" for key in slevy_list if key in slevy_hodnoty and slevy_hodnoty[key] > 0
+            ] + [
+                f"{deti_labels[key]}: {deti_hodnoty[key]} Kč" for key in deti_list if key in deti_hodnoty and deti_hodnoty[key] > 0
+            ] + [
+                f"{invalidita_labels[key]}: {invalidita_hodnoty[key]} Kč" for key in invalidita_list if key in invalidita_hodnoty and invalidita_hodnoty[key] > 0
+            ] + [
+                f"{ztp_labels[key]}: {ztp_hodnoty[key]} Kč" for key in ztp_list if key in ztp_hodnoty and ztp_hodnoty[key] > 0
+            ]
+
+            pouzite_slevy = ', '.join(pouzite_slevy_list)
+
             # Save the result if the user is logged in
             if request.user.is_authenticated:
                 CalculationResultYear.objects.create(
@@ -214,7 +297,8 @@ def calculate_tax_rok(request):
                     socialni_pojisteni=socialni_pojisteni,
                     dan_pred_slevami=pred_slevami_dan,
                     dan_po_slevach=dan_po_slevach,
-                    cista_mzda=cista_mzda
+                    cista_mzda=cista_mzda,
+                    pouzite_slevy=pouzite_slevy
                 )
 
             context['form'] = form
@@ -228,6 +312,7 @@ def calculate_tax_rok(request):
                 'dan': pred_slevami_dan,
                 'dan2': dan_po_slevach,
                 'cista_mzda': cista_mzda,
+                'pouzite_slevy': pouzite_slevy,
             }
     else:
         form = TaxFormRok()
@@ -238,15 +323,15 @@ def calculate_tax_rok(request):
 
 def registration(request):
     if request.method == "POST":
-        form = UserCreationForm(request.POST)
+        form = SignupForm(request.POST)
 
         if form.is_valid():
             form.save()
-            messages.add_message(request, messages.INFO, "Registration was successful.")
+            messages.success(request, "REGISTRACE PROBĚHLA ÚSPĚŠNĚ!")
             return redirect("login")
 
     else:
-        form = UserCreationForm()
+        form = SignupForm()
     return render(request, "registration/registration.html", {"form": form})
 
 @login_required
@@ -287,10 +372,12 @@ def history(request):
 def delete_monthly_result(request, result_id):
     result = CalculationResult.objects.get(pk=result_id, user=request.user)  # Ensure user owns the result
     result.delete()
+    messages.success(request, "MĚSÍČNÍ VÝPOČET BYL ÚSPĚŠNĚ ODSTRANĚN Z HISTORIE!")
     return redirect('result_history')  # Assumes 'history' is the name of your history view
 
 @login_required
 def delete_yearly_result(request, result_id):
     result = CalculationResultYear.objects.get(pk=result_id, user=request.user)  # Ensure user owns the result
     result.delete()
+    messages.success(request, "ROČNÍ VÝPOČET BYL ÚSPĚŠNĚ ODSTRANĚN Z HISTORIE!")
     return redirect('result_history')

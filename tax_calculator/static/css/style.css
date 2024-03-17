@@ -68,6 +68,20 @@ nav ul li a:hover {
     transition: all ease 0.2s;
     border-radius: 10px;
 }
+
+.alert {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #28a745; /* Bootstrap's success color */
+    color: white; /* White text color */
+    padding: 10px 20px; /* Some padding */
+    border-radius: 5px; /* Rounded corners */
+    font-weight: bold;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Slight shadow for depth */
+    margin-bottom: 20px; /* Space below the alert */
+}
+
 .index_home{
     display: flex;
     justify-content: space-around;
@@ -75,7 +89,7 @@ nav ul li a:hover {
     position: absolute;
     left: 50%;
     top:40%;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -40%);
     width:90%;
 
 }
@@ -118,7 +132,7 @@ nav ul li a:hover {
     margin: 10px;
     padding: 12px 24px;
     color: black;
-    border: 1px solid black;
+    border: 3px solid black;
     border-radius: 50px;
     font-weight: 500;
     letter-spacing: 0.4px;
@@ -174,7 +188,7 @@ nav ul li a:hover {
     width:50%;
     border-right: 1px solid #006FB8;
     height: 40%;
-    margin-bottom:-15% ;
+    margin-bottom: -10%;
     position: absolute;
     bottom: 5px;
     right: 70px;
@@ -306,78 +320,165 @@ nav ul li a:hover {
     flex-wrap: wrap;
 }
 
-.footer{
+.footer {
     background-color: #24262b;
-    padding: 70px 0;
+    padding: 40px 0;
+    width: 100%;
+    margin-top: auto; /* Tlačí zápatí dolů */
 }
-.footer-sloup{
+
+.footer-sloup {
     width: 25%;
     padding: 0 15px;
 }
-.footer-sloup h4{
+
+.footer-sloup h4 {
     font-size: 18px;
     color: #ffffff;
     text-transform: capitalize;
-    margin-bottom: 35px;
+    margin-bottom: 20px; /* Reduced margin for a more compact layout */
     font-weight: 500;
     position: relative;
 }
-.footer-sloup h4::before{
+
+.footer-sloup h4::before {
     content: '';
     position: absolute;
-    left:0;
+    left: 0;
     bottom: -10px;
     background-color: #006FB8;
     height: 2px;
     box-sizing: border-box;
     width: 50px;
 }
-.footer-sloup ul li:not(:last-child){
-    margin-bottom: 10px;
+
+.footer-sloup ul li:not(:last-child) {
+    margin-bottom: 8px; /* Slightly reduced margin */
 }
-.footer-sloup ul li a{
+
+.footer-sloup ul li a {
     font-size: 16px;
     text-transform: capitalize;
-    color: #ffffff;
     text-decoration: none;
     font-weight: 300;
     color: #bbbbbb;
     display: block;
     transition: all 0.3s ease;
 }
-.footer-sloup ul li a:hover{
+
+.footer-sloup ul li a:hover {
     color: #006FB8;
     padding-left: 8px;
 }
-.footer-sloup .social-links a{
+
+.footer-sloup .social-links a {
     display: inline-block;
     height: 40px;
     width: 40px;
     background-color: rgba(255,255,255,0.2);
-    margin:0 10px 10px 0;
+    margin: 0 10px 10px 0;
     text-align: center;
     line-height: 40px;
     border-radius: 50%;
     color: #ffffff;
     transition: all 0.5s ease;
 }
-.footer-sloup .social-links a:hover{
+
+.footer-sloup .social-links a:hover {
     color: #24262b;
     background-color: #006FB8;
 }
 
-/*responsive*/
-@media(max-width: 767px){
-    .footer-sloup{
-        width: 50%;
-        margin-bottom: 30px;
+.footer-sloup img {
+    width: 175px;
+    height: 150px;
+    margin-bottom: 20px;
+}
+
+.copy-right {
+    text-align: center;
+    width: 100%;
+    color: white;
+    padding: 20px 0;
+    font-size: 16px;
+    border-top: 2px solid #006FB8; /* Adds a blue line above the copyright text */
+    margin-top: 20px; /* Ensures some space between the items and the line */
+}
+
+.reset-password-confirmation {
+    background-color: #f4f4f4;
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+    max-width: 500px;
+    margin: 20px auto;
+}
+
+.reset-password-confirmation h2 {
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.reset-password-confirmation p {
+    color: #666;
+    line-height: 1.5;
+    margin-bottom: 15px;
+}
+
+.login-link {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.login-link:hover {
+    background-color: #0056b3;
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+    .footer-sloup {
+        width: 50%; /* Adjust to 2 columns on medium devices */
+        margin-bottom: 20px; /* Add some space below each column */
     }
 }
-@media(max-width: 574px){
-    .footer-sloup{
-        width: 100%;
+
+@media (max-width: 768px) {
+    .footer-sloup {
+        width: 100%; /* Full width for smaller devices, making it 1 column */
+    }
+
+    .footer-sloup h4, .footer-sloup ul li a, .copy-right {
+        font-size: 14px; /* Slightly smaller font sizes */
+    }
+
+    .footer-sloup .social-links a {
+        margin: 0 5px 5px 0; /* Reduce spacing around social icons */
     }
 }
+
+@media (max-width: 480px) {
+    .footer {
+        padding: 20px 0; /* Reduce padding for very small devices */
+    }
+
+    .footer-sloup h4::before {
+        width: 30px; /* Make the underline shorter */
+    }
+
+    .footer-sloup img {
+        width: 150px; /* Adjust image size for very small screens */
+        height: 125px;
+    }
+
+    .copy-right {
+        font-size: 14px; /* Smaller text for copyright information */
+    }
+}
+
 
 nav .menu-btn{
     display: none;
