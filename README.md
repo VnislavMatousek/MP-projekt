@@ -52,7 +52,7 @@ Po spuštění serveru je aplikace dostupná na portu `8100`.
 
 ## Použití
 
-Po spuštění aplikace můžete přistoupit k výpočtu vaší daně z příjmů. Stačí zadat relevantní informace do formuláře a aplikace vypočítá vaši daňovou povinnost.
+Po spuštění aplikace můžete přistoupit k výpočtu vaši daně z příjmů nebo stačí zadat relevantní informace do formuláře a aplikace vypočítá vaši daňovou povinnost.
 
 ## Přispění
 
