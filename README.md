@@ -4,22 +4,22 @@
 
 ## Úvod
 
-Vítejte v repozitáři naší aplikace pro výpočet daně z příjmů fyzických osob. Tato webová aplikace byla vytvořena s cílem zjednodušit a zpřístupnit proces výpočtu daně z příjmů pro širokou veřejnost v České republice. Aplikace je určena pro jednotlivce, kteří chtějí rychle, efektivně a správně vypočítat svou daňovou povinnost.
+Vítejte v repozitáři webové aplikace pro výpočet daně z příjmů fyzických osob. Tato webová aplikace byla vytvořena s cílem zjednodušit a zpřístupnit proces výpočtu daně z příjmů pro účetní a širokou veřejnost v České republice. Aplikace je určena pro jednotlivce, kteří chtějí rychle, efektivně a správně vypočítat svou daňovou povinnost.
 
 ## Funkcionalita
 
 Aplikace nabízí následující funkce:
 
-- **Výpočet daně z příjmů:** Umožňuje uživatelům vypočítat výši daně na základě různých druhů příjmů.
+- **Výpočet daně z příjmů:** Umožňuje uživatelům vypočítat výši daně na základě různých příjmů.
 - **Přehledné uživatelské rozhraní:** Nabízí jednoduché a intuitivní ovládání pro všechny uživatele.
-- **Podpora různých typů příjmů:** Umožňuje zahrnout různé typy příjmů a odpočtů pro co nejpřesnější výpočet.
+- **Přehled historie výpočtů:** Obsahuje intuitivní historie uživatelských výpočtů. 
 - **Aktualizované daňové tabulky:** Zahrnuje nejnovější daňové sazby a úlevy.
 
 ## Technologie
 
 Aplikace je vyvinuta s využitím moderních technologií:
 
-- **Frontend:** HTML5, CSS3, JavaScript, Bootstrap
+- **Frontend:** HTML5, CSS3, JavaScript
 - **Backend:** Django (Python)
 - **Databáze:** SQLite
 
@@ -27,24 +27,28 @@ Aplikace je vyvinuta s využitím moderních technologií:
 
 Pro spuštění aplikace na lokálním stroji postupujte podle následujících kroků:
 
-1. Klonujte repozitář do vašeho lokálního stroje:
-   
-   git clone https://github.com/vaseGithubUzivatelskeJmeno/aplikace-dane.git
+1. Nainstalujte docker: https://www.docker.com/
 
-2. Přejděte do složky s projektem:
+2. Naklonujte repozitář do vašeho lokálního stroje:
+   
+   git clone https://github.com/VnislavMatousek/MP-projekt.git
+
+3. Přejděte do složky s projektem přes příkazovou řádku:
 
    cd MP-Projekt
-   
-3. Nainstalujte potřebné závislosti:
 
-   pip install -r requirements.txt
+4. Použijte příkaz **docker compose build** pro spuštění aplikace
+   
+5. Spusťte databázové migrace:
+   
+   **./run.sh migrate**
 
 4. Spusťte Django server:
 
-   docker compose up
+   **docker compose up**
 
 
-Po spuštění serveru je aplikace dostupná na `http://127.0.0.1:8000/`.
+Po spuštění serveru je aplikace dostupná na portu `8100`.
 
 ## Použití
 
