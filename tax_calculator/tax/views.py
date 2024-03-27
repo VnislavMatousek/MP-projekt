@@ -222,9 +222,7 @@ def calculate_tax_rok(request):
 
             # Pojištění placené zaměstnavatelem (pro výpočet superhrubé mzdy)
             socialni_pojisteni_zamestnavatelem = math.ceil(hruba_mzda * 0.248)
-            zdravotni_pojisteni_zamestnavatelem = math.ceil(
-                hruba_mzda * 0.09
-            )  # Zaokrouhleno nahoru
+            zdravotni_pojisteni_zamestnavatelem = math.ceil(hruba_mzda * 0.09)  # Zaokrouhleno nahoru
 
             # Superhrubá mzda
             nezaokrouhlena_superhruba_mzda = (

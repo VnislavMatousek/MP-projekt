@@ -58,14 +58,6 @@
 
         <h2 id="yearly-results">Historie roční kalkulačky</h2>
 
-        {% if messages %}
-            {% for message in messages %}
-                <div class="alert {{ message.tags }}">
-                    {{ message }}
-                </div>
-            {% endfor %}
-        {% endif %}
-
         <div class="history-section">
             {% for result in yearly_results %}
                 <div class="result-item">

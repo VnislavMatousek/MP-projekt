@@ -41,7 +41,7 @@ class TaxForm(forms.Form):
     zakladni_mzda = forms.IntegerField(label="Základní mzda")
     prirazky = forms.IntegerField(
         label="Příplatky za víkend, noční směny nebo přesčasy",
-        required=False,
+        required=True,
         initial=0,
     )
     slevy = forms.MultipleChoiceField(

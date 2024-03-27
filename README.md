@@ -21,11 +21,11 @@ Aplikace je vyvinuta s využitím moderních technologií:
 
 - **Frontend:** HTML5, CSS3, JavaScript
 - **Backend:** Django (Python)
-- **Databáze:** SQLite
+- **Databáze:** MySQL
 
 ## Instalace
 
-Pro spuštění aplikace na lokálním stroji postupujte podle následujících kroků:
+Pro spuštění a instalaci aplikace postupujte podle následujících kroků:
 
 1. Nainstalujte docker: https://www.docker.com/
 
@@ -37,7 +37,7 @@ Pro spuštění aplikace na lokálním stroji postupujte podle následujících 
 
    cd MP-Projekt
 
-4. Použijte příkaz **docker compose build** pro spuštění aplikace
+4. Použijte příkaz **docker compose build** pro sestavení aplikace
    
 5. Spusťte databázové migrace:
    
